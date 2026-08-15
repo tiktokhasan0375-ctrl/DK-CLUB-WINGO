@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>DK CLUB | Official 24/7 Win Go</title>
+    <title>B20 CLUB | Official 24/7 Win Go</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
@@ -13,12 +13,11 @@
 
     <style>
         :root { 
-            /* DK CLUB GREEN THEME */
-            --primary-green: #28a745; 
-            --dark-green: #1e7e34;    
+            --primary-green: #10b981; 
+            --dark-green: #059669;    
             --text-slate: #334155; 
-            --site-accent: #ffc107; /* Gold/Yellow accent */
-            --dk-gradient: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+            --site-accent: #fbbf24;
+            --dk-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
             --loss-gradient: linear-gradient(180deg, #4b5563 0%, #1f2937 100%);
         }
         body { -webkit-tap-highlight-color: transparent; user-select: none; background-color: #f0fdf4; overflow-x: hidden; color: var(--text-slate); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
@@ -52,7 +51,7 @@
         .res-header-bg { height: 150px; background: var(--dk-gradient); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border-radius: 40px 40px 0 0; }
         .loss-mode .res-header-bg { background: var(--loss-gradient); }
         .res-title-text { font-size: 32px; font-weight: 950; color: white; position: relative; z-index: 10; margin-top: 30px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .res-bonus-box { background: #fffdf5; margin: -35px 20px 15px; padding: 25px 15px; border-radius: 25px; border: 2px solid var(--primary-green); box-shadow: 0 15px 35px rgba(40, 167, 69, 0.15); position: relative; z-index: 20; }
+        .res-bonus-box { background: #f0fdf4; margin: -35px 20px 15px; padding: 25px 15px; border-radius: 25px; border: 2px solid var(--primary-green); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15); position: relative; z-index: 20; }
         .loss-mode .res-bonus-box { background: #f8fafc; border-color: #94a3b8; box-shadow: none; }
         .res-label { font-size: 14px; font-weight: 800; color: var(--dark-green); text-transform: uppercase; margin-bottom: 5px; letter-spacing: 1px; }
         .loss-mode .res-label { color: #64748b; }
@@ -62,21 +61,21 @@
         .history-card { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
         .history-badge { padding: 4px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; border: 1px solid transparent; }
         .badge-failed { color: #ef4444; border-color: #fee2e2; background: #fffafb; }
-        .badge-success { color: #22c55e; border-color: #dcfce7; background: #f0fdf4; }
-        .badge-pending { color: #f39c12; border-color: #fef3c7; background: #fffbeb; }
+        .badge-success { color: #10b981; border-color: #d1fae5; background: #f0fdf4; }
+        .badge-pending { color: #f59e0b; border-color: #fef3c7; background: #fffbeb; }
         .history-val-red { color: #ef4444; font-weight: 700; }
-        .history-val-green { color: #22c55e; font-weight: 700; }
-        .history-val-pending { color: #f39c12; font-weight: 700; }
+        .history-val-green { color: #10b981; font-weight: 700; }
+        .history-val-pending { color: #f59e0b; font-weight: 700; }
         .pick-circle { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 11px; }
     </style>
 </head>
 <body class="pb-24">
-    <div id="toast-msg">বেট সফল হয়েছে!</div>
+    <div id="toast-msg">বেট সফল হয়েছে!</div>
 
     <div class="gradient-main p-5 rounded-b-[40px] shadow-lg">
         <div class="flex justify-between items-center mb-6 text-white px-2">
             <button onclick="window.history.back()"><i class="fa-solid fa-chevron-left text-lg"></i></button>
-            <h1 class="text-2xl font-black italic tracking-tighter uppercase">DK <span class="text-yellow-300">CLUB</span></h1>
+            <h1 class="text-2xl font-black italic tracking-tighter uppercase">B20 <span class="text-yellow-300">CLUB</span></h1>
             <button><i class="fa-solid fa-headphones-simple"></i></button>
         </div>
         <div class="bg-white rounded-[30px] p-6 shadow-2xl text-center">
@@ -133,26 +132,26 @@
         </div>
         <div class="betting-area space-y-4">
             <div class="flex gap-3">
-                <button onclick="openBet('Green', '#28a745')" class="bet-btn flex-1 bg-green-600 text-white font-black py-4 rounded-2xl shadow-lg">Green</button>
-                <button onclick="openBet('Violet', '#9b59b6')" class="bet-btn flex-1 bg-purple-500 text-white font-black py-4 rounded-2xl shadow-lg">Violet</button>
-                <button onclick="openBet('Red', '#e74c3c')" class="bet-btn flex-1 bg-red-500 text-white font-black py-4 rounded-2xl shadow-lg">Red</button>
+                <button onclick="openBet('Green', '#10b981')" class="bet-btn flex-1 text-white font-black py-4 rounded-2xl shadow-lg" style="background:#10b981">Green</button>
+                <button onclick="openBet('Violet', '#8b5cf6')" class="bet-btn flex-1 text-white font-black py-4 rounded-2xl shadow-lg" style="background:#8b5cf6">Violet</button>
+                <button onclick="openBet('Red', '#ef4444')" class="bet-btn flex-1 text-white font-black py-4 rounded-2xl shadow-lg" style="background:#ef4444">Red</button>
             </div>
             <div class="bg-white p-5 rounded-[30px] shadow-md border border-gray-200">
                 <div class="grid grid-cols-5 gap-4 mb-6">
-                    <button onclick="openBet('0', '#9b59b6')" class="bet-btn ball bg-purple-500">0</button>
-                    <button onclick="openBet('1', '#28a745')" class="bet-btn ball bg-green-600">1</button>
-                    <button onclick="openBet('2', '#e74c3c')" class="bet-btn ball bg-red-500">2</button>
-                    <button onclick="openBet('3', '#28a745')" class="bet-btn ball bg-green-600">3</button>
-                    <button onclick="openBet('4', '#e74c3c')" class="bet-btn ball bg-red-500">4</button>
-                    <button onclick="openBet('5', '#28a745')" class="bet-btn ball bg-green-600">5</button>
-                    <button onclick="openBet('6', '#e74c3c')" class="bet-btn ball bg-red-500">6</button>
-                    <button onclick="openBet('7', '#28a745')" class="bet-btn ball bg-green-600">7</button>
-                    <button onclick="openBet('8', '#e74c3c')" class="bet-btn ball bg-red-500">8</button>
-                    <button onclick="openBet('9', '#28a745')" class="bet-btn ball bg-green-600">9</button>
+                    <button onclick="openBet('0', '#8b5cf6')" class="bet-btn ball" style="background:#8b5cf6">0</button>
+                    <button onclick="openBet('1', '#10b981')" class="bet-btn ball" style="background:#10b981">1</button>
+                    <button onclick="openBet('2', '#ef4444')" class="bet-btn ball" style="background:#ef4444">2</button>
+                    <button onclick="openBet('3', '#10b981')" class="bet-btn ball" style="background:#10b981">3</button>
+                    <button onclick="openBet('4', '#ef4444')" class="bet-btn ball" style="background:#ef4444">4</button>
+                    <button onclick="openBet('5', '#10b981')" class="bet-btn ball" style="background:#10b981">5</button>
+                    <button onclick="openBet('6', '#ef4444')" class="bet-btn ball" style="background:#ef4444">6</button>
+                    <button onclick="openBet('7', '#10b981')" class="bet-btn ball" style="background:#10b981">7</button>
+                    <button onclick="openBet('8', '#ef4444')" class="bet-btn ball" style="background:#ef4444">8</button>
+                    <button onclick="openBet('9', '#10b981')" class="bet-btn ball" style="background:#10b981">9</button>
                 </div>
                 <div class="flex gap-3">
-                    <button onclick="openBet('Big', '#f39c12')" class="bet-btn flex-1 bg-orange-400 text-white font-black py-3 rounded-xl shadow-md">BIG</button>
-                    <button onclick="openBet('Small', '#3498db')" class="bet-btn flex-1 bg-blue-500 text-white font-black py-3 rounded-xl shadow-md">SMALL</button>
+                    <button onclick="openBet('Big', '#f59e0b')" class="bet-btn flex-1 text-white font-black py-3 rounded-xl shadow-md" style="background:#f59e0b">BIG</button>
+                    <button onclick="openBet('Small', '#0ea5e9')" class="bet-btn flex-1 text-white font-black py-3 rounded-xl shadow-md" style="background:#0ea5e9">SMALL</button>
                 </div>
             </div>
         </div>
@@ -242,16 +241,16 @@
     </div>
 
     <script>
-        // --- NEW FIREBASE CONFIG DK CLUB ---
+        // --- FIREBASE CONFIG ---
         const firebaseConfig = {
-            apiKey: "AIzaSyAsZlkP9qo1uXu7i55e6bV9Xg7pHedlOHk",
-            authDomain: "dk-club-1d649.firebaseapp.com",
-            databaseURL: "https://dk-club-1d649-default-rtdb.firebaseio.com",
-            projectId: "dk-club-1d649",
-            storageBucket: "dk-club-1d649.firebasestorage.app",
-            messagingSenderId: "1097896403968",
-            appId: "1:1097896403968:web:ac1b8c071ee225cab3a4e5",
-            measurementId: "G-RT3FLNP8FG"
+            apiKey: "AIzaSyAy9PPm5UJpuhxfuPhNgqsUOOBFXXlmzU8",
+            authDomain: "pay-admin-98aca.firebaseapp.com",
+            databaseURL: "https://pay-admin-98aca-default-rtdb.firebaseio.com",
+            projectId: "pay-admin-98aca",
+            storageBucket: "pay-admin-98aca.firebasestorage.app",
+            messagingSenderId: "183780095284",
+            appId: "1:183780095284:web:c26822afd79efc4a826161",
+            measurementId: "G-B6EF5RW1WZ"
         };
 
         if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
@@ -311,9 +310,9 @@
 
         function getWinningColors(n) {
             n = parseInt(n);
-            if (n === 0) return ['#e74c3c', '#9b59b6'];
-            if (n === 5) return ['#28a745', '#9b59b6'];
-            return (n % 2 === 0) ? ['#e74c3c'] : ['#28a745'];
+            if (n === 0) return ['#ef4444', '#8b5cf6'];
+            if (n === 5) return ['#10b981', '#8b5cf6'];
+            return (n % 2 === 0) ? ['#ef4444'] : ['#10b981'];
         }
 
         function renderRecords() {
@@ -330,7 +329,7 @@
                 html += `<div class="chart-row">
                     <div class="text-slate-400 font-mono text-[9px]">${h.period.toString().slice(-4)}</div><div></div>
                     ${[0,1,2,3,4,5,6,7,8,9].map(n => `<div><div class="num-circle ${n===parseInt(h.num)?'num-selected':''}" style="${n===parseInt(h.num)?'background:'+h.color[0]:''}">${n}</div></div>`).join('')}
-                    <div><div class="w-4 h-4 rounded text-white flex items-center justify-center text-[9px] font-bold m-auto" style="background:${h.num>=5?'#f39c12':'#3498db'}">${h.num>=5?'B':'S'}</div></div>
+                    <div><div class="w-4 h-4 rounded text-white flex items-center justify-center text-[9px] font-bold m-auto" style="background:${h.num>=5?'#f59e0b':'#0ea5e9'}">${h.num>=5?'B':'S'}</div></div>
                 </div>`;
             });
             container.innerHTML = html;
@@ -343,7 +342,7 @@
             if(!canvas || !container || historyData.length === 0) return;
             canvas.width = container.offsetWidth; canvas.height = container.offsetHeight;
             const ctx = canvas.getContext('2d'); ctx.clearRect(0,0, canvas.width, canvas.height);
-            ctx.strokeStyle = '#28a745'; ctx.lineWidth = 1.5;
+            ctx.strokeStyle = '#10b981'; ctx.lineWidth = 1.5;
             const circles = container.querySelectorAll('.num-selected');
             ctx.beginPath();
             circles.forEach((c, i) => {
@@ -379,7 +378,7 @@
                 listDiv.innerHTML = list.map(b => {
                     const isWin = b.status === 'WIN'; const isPending = b.status === 'Pending';
                     const timeStr = new Date(b.time).toLocaleString();
-                    const pickColor = (b.pick === 'Big' || b.pick === 'Small') ? (b.pick === 'Big' ? '#f39c12' : '#3498db') : (b.pick === 'Green' ? '#22c55e' : (b.pick === 'Red' ? '#ef4444' : '#9b59b6'));
+                    const pickColor = (b.pick === 'Big' || b.pick === 'Small') ? (b.pick === 'Big' ? '#f59e0b' : '#0ea5e9') : (b.pick === 'Green' ? '#10b981' : (b.pick === 'Red' ? '#ef4444' : '#8b5cf6'));
                     let badgeClass = isPending ? 'badge-pending' : (isWin ? 'badge-success' : 'badge-failed');
                     let statusText = isPending ? 'Pending' : (isWin ? 'Succeed' : 'Failed');
                     let amtColor = isPending ? 'history-val-pending' : (isWin ? 'history-val-green' : 'history-val-red');
