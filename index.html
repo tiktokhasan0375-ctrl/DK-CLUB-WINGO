@@ -477,10 +477,16 @@ body{background:#f8fafc!important;color:#334155!important;padding-bottom:18px}
 .tab-active{background:var(--primary-green)!important;color:#fff!important;border-radius:8px!important}
 #content-chart,#content-records,#content-my{background:#fff!important;color:#334155!important;border:1px solid #e2e8f0;border-top:0}
 .chart-row{border-color:#e2e8f0;padding:9px 0}
+.chart-statistics{padding:8px 6px 12px;border-bottom:1px solid #eee7d8;margin-bottom:8px;color:#475569;font-size:10px}
+.chart-statistics strong{color:#8a6427}.chart-stat-grid{display:grid;grid-template-columns:repeat(10,minmax(18px,1fr));gap:3px;margin-top:6px}.chart-stat-cell{text-align:center;border:1px solid #eee7d8;border-radius:5px;padding:4px 0;background:#fffaf0}.chart-stat-cell b{display:block;color:#9a702c;font-size:11px}.chart-stat-cell small{font-size:8px;color:#64748b}
 .num-circle{background:#fff;color:#64748b;border-color:#cbd5e1}
 .history-card{border-color:#f1f5f9}
 .history-card .text-slate-700{color:#334155!important}.history-card .text-gray-400{color:#94a3b8!important}
 #content-records th,#content-records td{color:#334155;border-color:#f1f5f9}
+/* Larger, clearer period numbers in Game History */
+#content-records tbody td:first-child{font-size:14px!important;font-weight:800!important;line-height:1.35!important;letter-spacing:.15px!important;color:#263449!important;white-space:nowrap!important;padding-left:7px!important;padding-right:7px!important}
+#content-records thead th:first-child{font-size:11px!important;font-weight:800!important}
+@media(max-width:380px){#content-records tbody td:first-child{font-size:12px!important;letter-spacing:0!important;padding-left:4px!important;padding-right:4px!important}}
 #bet-popup{background:#fff;color:#334155;border:1px solid #e2e8f0}
 #bet-popup .font-bold.text-gray-700{color:#334155!important}
 #bet-popup .btn-val{background:#f4f4f5;color:#334155;border-color:#e2e8f0}
@@ -493,12 +499,74 @@ body{background:#f8fafc!important;color:#334155!important;padding-bottom:18px}
 .quick-mult.active{background:var(--primary-green);color:#fff;border-color:var(--primary-green)}
 @media(max-width:380px){.brand-logo{font-size:21px}.number-image-btn,.number-image-btn img{height:48px;width:48px}.grid.grid-cols-5{gap:7px!important}.quick-random,.quick-mult{padding:7px 4px;font-size:9px}}
 
+
+/* Video-inspired refinements: preserve StarLight white/gold palette */
+.game-period-strip{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:7px;flex-wrap:wrap}
+.game-period-strip .period-caption{font-size:10px;color:#fff4d6;font-weight:800;letter-spacing:.5px}
+.game-period-strip #current-period{font-size:11px!important;color:#fff!important;font-weight:800}
+.latest-results{display:flex;gap:5px;align-items:center;margin-top:8px}
+.latest-results .result-dot{width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;font-size:14px;font-weight:1000;box-shadow:0 2px 5px #0002;border:1px solid #f3e4bd}
+.latest-results .result-dot img{width:100%;height:100%;object-fit:contain}
+.latest-results-label{font-size:9px;color:#fff3d3;font-weight:800;margin-bottom:2px}
+@media(max-width:380px){.latest-results .result-dot{width:22px;height:22px}.latest-results{gap:4px}}
+#random-spin-overlay{display:none;position:fixed;inset:0;z-index:4200;background:rgba(0,0,0,.78);align-items:center;justify-content:center;padding:18px}
+#random-spin-overlay.active{display:flex}
+.random-spin-card{width:min(100%,360px);background:#101010;border:1px solid #b88a3b;border-radius:18px;padding:20px 16px 16px;text-align:center;box-shadow:0 20px 65px #0009}
+.random-spin-title{font-weight:900;letter-spacing:2px;color:#e7ca83;font-size:13px;margin-bottom:18px}
+.random-spin-stage{display:flex;align-items:center;justify-content:center;gap:10px;min-height:112px}
+.spin-ball{width:82px;height:82px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#171717;overflow:hidden}
+.spin-ball img{width:100%;height:100%;object-fit:contain}
+#random-spin-overlay.spinning .spin-ball{animation:ballShake .13s infinite alternate}
+#random-spin-overlay.spinning .spin-ball:nth-child(2){animation-delay:.04s}#random-spin-overlay.spinning .spin-ball:nth-child(3){animation-delay:.08s}
+@keyframes ballShake{from{transform:translateY(-7px) rotate(-8deg) scale(.94)}to{transform:translateY(7px) rotate(8deg) scale(1.04)}}
+.random-spin-caption{color:#f8e8c4;font-size:12px;font-weight:800;margin:14px 0}
+.random-spin-actions{display:flex;gap:10px}.random-spin-actions button{flex:1;border-radius:9px;padding:10px;font-weight:900;background:#292929;color:#fff}.random-spin-actions #spin-use-btn{background:linear-gradient(135deg,#e7ca83,#b88a3b);color:#33230b}.random-spin-actions #spin-use-btn:disabled{opacity:.45}
+@media(max-width:380px){.spin-ball{width:72px;height:72px}}
+
+
+/* Final readability and control polish */
+.gradient-main.mx-4.rounded-3xl.p-4.shadow-xl.relative.overflow-hidden{
+  background:linear-gradient(135deg,#8a6427 0%,#b88a3b 48%,#76521e 100%)!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+  box-shadow:0 8px 22px rgba(118,82,30,.20)!important;
+}
+.timer-panel{min-width:126px;padding:10px 10px 9px!important;border:1px solid rgba(255,255,255,.34)!important;border-radius:13px;background:linear-gradient(145deg,rgba(28,25,20,.42),rgba(0,0,0,.24));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 4px 12px rgba(0,0,0,.14);}
+.timer-heading{font-size:9px!important;line-height:1.25;font-weight:900!important;letter-spacing:1.15px;color:#fff5dc!important;margin:0 0 7px!important;text-shadow:0 1px 2px #0005}
+#timer-display{display:flex;align-items:center;justify-content:flex-end;gap:4px;font-size:27px!important;line-height:1;font-weight:1000!important;letter-spacing:1px;color:#fff!important;text-shadow:0 2px 5px rgba(0,0,0,.28);font-variant-numeric:tabular-nums}
+#timer-display span{display:inline-flex;align-items:center;justify-content:center;min-width:31px;height:38px;padding:0 5px;border-radius:7px;background:linear-gradient(180deg,#fffdf7,#eee4ce);border:1px solid #d7bd83;color:#7a531b!important;box-shadow:inset 0 1px 2px #fff,0 2px 4px #0002}
+.game-period-strip{margin-top:8px!important;gap:5px!important;justify-content:flex-end!important}
+.game-period-strip .period-caption{font-size:8px!important;letter-spacing:1px!important;color:#fff1cf!important}
+.game-period-strip #current-period{font-size:10px!important;color:#fff!important;font-weight:900!important;overflow-wrap:anywhere;text-shadow:0 1px 2px #0005}
+#display-mode-label{font-size:11px!important;font-weight:900!important;letter-spacing:.8px!important;color:#fff!important;text-shadow:0 1px 2px #0005}
+.latest-results-label{font-size:9px!important;letter-spacing:.65px!important;color:#fff!important;text-transform:uppercase;text-shadow:0 1px 2px #0005}
+.latest-results .result-dot{width:27px;height:27px;border:2px solid rgba(255,255,255,.75);box-shadow:0 3px 8px #0003}
+#quick-bet-controls{gap:6px!important;overflow:visible!important;flex-wrap:nowrap}
+.quick-random{display:flex!important;align-items:center;justify-content:center;gap:6px;min-height:37px;padding:8px 11px!important;flex:1.35!important;border:1px solid #8a6427!important;border-radius:9px!important;background:linear-gradient(135deg,#f4dfaa,#b88a3b 60%,#8a6427)!important;color:#382609!important;box-shadow:0 3px 7px rgba(118,82,30,.22),inset 0 1px 0 #fff8!important;font-size:10px!important;font-weight:1000!important;letter-spacing:.55px!important;text-shadow:0 1px 0 #fff6;white-space:nowrap}
+.quick-random i{font-size:12px}
+.quick-random:active{transform:translateY(1px);filter:brightness(.96)}
+.quick-mult{min-height:37px!important;padding:7px 5px!important;border-radius:8px!important;font-size:10px!important;font-weight:900!important;letter-spacing:.1px;border:1px solid #e2d4b8!important;background:#fffaf0!important;color:#705323!important;box-shadow:0 2px 4px #0000000a}
+.quick-mult.active{background:linear-gradient(135deg,#b88a3b,#8a6427)!important;color:#fff!important;border-color:#8a6427!important;box-shadow:0 3px 8px #8a642733}
+.bet-btn{font-weight:900!important;letter-spacing:.25px;text-shadow:0 1px 2px rgba(0,0,0,.16)}
+#content-chart,#content-records,#content-my{font-size:12px!important;line-height:1.55!important;color:#263244!important}
+#content-records th,#content-records td{font-size:11px!important;line-height:1.5!important;padding:10px 7px!important}
+.bg-slate-200.rounded-t-2xl button{font-weight:800!important;letter-spacing:.15px}
+#bet-popup{font-size:13px!important;line-height:1.5!important}
+#bet-popup button{font-weight:850!important;letter-spacing:.15px}
+@media(max-width:380px){
+ .timer-panel{min-width:112px;padding:8px 7px!important}
+ #timer-display{font-size:23px!important;gap:3px}
+ #timer-display span{min-width:27px;height:34px}
+ .quick-random{gap:4px;padding:7px 6px!important;font-size:9px!important;letter-spacing:.1px!important}
+ .quick-mult{font-size:9px!important;padding:7px 3px!important}
+ .latest-results .result-dot{width:23px;height:23px}
+}
+
 </style>
 </head>
 
 <body class="pb-24">
 
-<div id="toast-msg">বেট সফল হয়েছে!</div>
+<div id="toast-msg">successfully!</div>
 
 <div class="gradient-main p-5 rounded-b-[40px] shadow-lg">
     <div class="flex justify-between items-center mb-6 text-white px-2">
@@ -533,15 +601,11 @@ body{background:#f8fafc!important;color:#334155!important;padding-bottom:18px}
             <span id="user-balance">0.00</span>
         </div>
 
-        <div class="flex gap-4">
-            <button onclick="openStarLightPage('withdraw')" class="flex-1 bg-slate-100 text-slate-700 font-bold py-3.5 rounded-2xl">
-                Withdraw
-            </button>
-            <button onclick="openStarLightPage('deposit')" class="flex-1 bg-[--primary-green] text-white font-bold py-3.5 rounded-2xl shadow-lg">
-                Deposit
-            </button>
+        <div class="flex gap-2">
+            <button onclick="openStarLightPage('withdraw')" class="flex-1 bg-slate-100 text-slate-700 font-bold py-3 rounded-xl text-sm">Withdraw</button>
+            <button onclick="openStarLightPage('deposit')" class="flex-1 bg-[--primary-green] text-white font-bold py-3 rounded-xl shadow-lg text-sm">Deposit</button>
         </div>
-    </div>
+</div>
 </div>
 
 <div class="grid grid-cols-4 gap-2 p-4">
@@ -570,16 +634,19 @@ body{background:#f8fafc!important;color:#334155!important;padding-bottom:18px}
     </button>
 </div>
 
-<div class="gradient-main mx-4 rounded-3xl p-5 shadow-xl flex justify-between items-center relative overflow-hidden">
-    <div class="z-10">
-        <p id="display-mode-label" class="text-[10px] font-bold text-green-100 uppercase mb-2 tracking-widest">Win Go 30s</p>
-        <p id="current-period" class="text-lg font-bold tracking-tighter text-white">Loading...</p>
-    </div>
-
-    <div class="text-right z-10 border-l border-white/20 pl-5">
-        <p class="text-[10px] font-bold text-green-100 uppercase mb-1">Time Left</p>
-        <div class="font-mono text-4xl font-black text-white" id="timer-display">
-            <span id="timer-min">00</span>:<span id="timer-sec">00</span>
+<div class="gradient-main mx-4 rounded-3xl p-4 shadow-xl relative overflow-hidden">
+    <div class="flex justify-between items-center gap-3">
+        <div class="z-10 min-w-0">
+            <p id="display-mode-label" class="text-[10px] font-bold text-green-100 uppercase mb-1 tracking-widest">Win Go 30s</p>
+            <p class="latest-results-label">Last 5 results</p>
+            <div id="latest-results" class="latest-results" aria-label="Latest five results">
+                <span class="result-dot">-</span><span class="result-dot">-</span><span class="result-dot">-</span><span class="result-dot">-</span><span class="result-dot">-</span>
+            </div>
+        </div>
+        <div class="text-right z-10 border-l border-white/20 pl-4 shrink-0 timer-panel">
+            <p class="timer-heading">TIME REMAINING</p>
+            <div class="font-mono text-3xl font-black text-white" id="timer-display"><span id="timer-min">00</span>:<span id="timer-sec">00</span></div>
+            <div class="game-period-strip"><span class="period-caption">Period</span><span id="current-period">Loading...</span></div>
         </div>
     </div>
 </div>
@@ -611,7 +678,7 @@ body{background:#f8fafc!important;color:#334155!important;padding-bottom:18px}
             </div>
 
             <div class="flex items-center gap-1.5 mb-3" id="quick-bet-controls">
-                <button onclick="randomBet()" class="quick-random">Random</button>
+                <button onclick="randomBet()" class="quick-random"><i class="fa-solid fa-shuffle" aria-hidden="true"></i><span>RANDOM</span></button>
                 <button onclick="setMainMultiplier(1,this)" class="quick-mult active">X1</button>
                 <button onclick="setMainMultiplier(5,this)" class="quick-mult">X5</button>
                 <button onclick="setMainMultiplier(10,this)" class="quick-mult">X10</button>
@@ -636,6 +703,7 @@ body{background:#f8fafc!important;color:#334155!important;padding-bottom:18px}
     </div>
 
     <div id="content-chart" class="bg-white p-2 min-h-[350px] shadow-inner relative overflow-x-auto">
+        <div id="chart-statistics" class="chart-statistics"></div>
         <div id="chart-list" class="relative"></div>
     </div>
 
@@ -656,6 +724,15 @@ body{background:#f8fafc!important;color:#334155!important;padding-bottom:18px}
     <div id="content-my" class="hidden bg-white min-h-[350px]">
         <div id="my-history-list"></div>
     </div>
+</div>
+
+<div id="random-spin-overlay" aria-hidden="true">
+  <div class="random-spin-card">
+    <div class="random-spin-title">RANDOM NUMBER</div>
+    <div class="random-spin-stage"><div class="spin-ball" id="spin-ball-a"><img alt="" src=""></div><div class="spin-ball" id="spin-ball-b"><img alt="" src=""></div><div class="spin-ball" id="spin-ball-c"><img alt="" src=""></div></div>
+    <div class="random-spin-caption" id="random-spin-caption">Number spinning...</div>
+    <div class="random-spin-actions"><button type="button" id="spin-close-btn" onclick="closeRandomSpin()">Close</button><button type="button" id="spin-use-btn" onclick="useRandomResult()" disabled>Continue</button></div>
+  </div>
 </div>
 
 <div id="bet-popup">
@@ -704,34 +781,96 @@ body{background:#f8fafc!important;color:#334155!important;padding-bottom:18px}
 
 <div id="result-overlay" class="result-container">
     <div class="result-card" id="res-card-node">
+        <div class="res-ribbon" aria-hidden="true"><span class="res-wing res-wing-left"></span><span class="res-wing res-wing-right"></span><span class="res-medal"><i class="fa-solid fa-rocket"></i></span></div>
         <div class="res-header-bg" id="res-header-node">
-            <i class="fa-solid fa-crown text-5xl text-white/40 absolute top-4"></i>
-            <h2 class="res-title-text" id="res-title-node">Winner</h2>
+            <h2 class="res-title-text" id="res-title-node">CONGRATULATIONS</h2>
         </div>
-
-        <div class="px-5 mt-4">
-            <p class="text-[10px] text-gray-400 font-bold uppercase mb-2">Lottery results</p>
-
-            <div class="flex justify-center gap-2 mb-6">
+        <div class="result-inner px-5 mt-4">
+            <p class="result-kicker">LOTTERY RESULTS</p>
+            <div class="result-tags flex justify-center gap-2 mb-5">
                 <span id="pop-res-color" class="res-tag">Green</span>
                 <span id="pop-res-num" class="res-tag">5</span>
                 <span id="pop-res-size" class="res-tag">Big</span>
             </div>
-
             <div class="res-bonus-box" id="res-bonus-node">
-                <p class="res-label" id="res-label-node">Bonus</p>
-                <p class="res-amt">৳<span id="res-amount-node">0.00</span></p>
-                <p class="text-[10px] mt-2 text-gray-400 font-bold">
-                    Period: <span id="res-period-node" class="text-slate-600">---</span>
-                </p>
+                <p class="res-label" id="res-label-node">BONUS</p>
+                <p class="res-amt"><span class="currency-mark">৳</span><span id="res-amount-node">0.00</span></p>
+                <p class="result-period-line" aria-hidden="true">PERIOD <span id="res-period-node">---</span></p>
             </div>
-
-            <button onclick="closeResultPopup()" class="absolute -bottom-16 left-1/2 -translate-x-1/2 text-white text-5xl opacity-80 hover:opacity-100 transition-opacity">
-                <i class="fa-solid fa-circle-xmark"></i>
-            </button>
+            <label class="auto-close-line"><input id="result-auto-close" type="checkbox"> <span>3 seconds auto close</span></label>
         </div>
+        <button onclick="closeResultPopup()" class="result-close" aria-label="Close result"><i class="fa-solid fa-xmark"></i></button>
     </div>
 </div>
+
+
+<style>
+/* Official-style result modal inspired by the supplied reference; game history remains visible behind it. */
+#result-overlay.result-container{background:rgba(4,7,15,.58)!important;backdrop-filter:blur(1.5px)!important;-webkit-backdrop-filter:blur(1.5px)!important;padding:22px 14px;}
+#res-card-node.result-card{width:min(88vw,390px);max-width:390px;min-height:500px;border-radius:28px;background:linear-gradient(155deg,#ff9b58 0%,#ff654c 48%,#ed3f39 100%);border:1px solid rgba(255,226,177,.7);box-shadow:0 22px 65px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.35);padding:0 0 34px;overflow:visible;color:#fff;}
+#res-card-node .res-header-bg{height:155px;border-radius:28px 28px 0 0;background:transparent!important;justify-content:flex-end;padding-bottom:16px;}
+#res-card-node .res-title-text{font-family:Georgia,'Times New Roman',serif;font-size:clamp(27px,7vw,38px);font-weight:700;letter-spacing:.2px;text-transform:none;text-shadow:0 2px 2px rgba(150,45,20,.16);margin:0;color:#fff;}
+#res-card-node .res-ribbon{position:absolute;z-index:25;left:50%;top:-34px;transform:translateX(-50%);width:86%;height:145px;pointer-events:none;background:linear-gradient(165deg,#ffc16f,#ff8a3e 52%,#e65a2f);clip-path:polygon(0 48%,18% 35%,30% 20%,50% 28%,70% 20%,82% 35%,100% 48%,91% 68%,9% 68%);filter:drop-shadow(0 8px 5px rgba(120,35,12,.28));}
+#res-card-node .res-medal{position:absolute;left:50%;top:4px;transform:translateX(-50%);width:112px;height:112px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 25%,#fff4b6 0,#ffc64c 40%,#e58a13 72%,#b85a0c 100%);border:7px solid #ffe8a2;box-shadow:0 0 0 5px rgba(255,255,255,.24),0 8px 18px rgba(110,39,9,.35);color:#fff;font-size:43px;text-shadow:0 2px 5px #b86a13;}
+#res-card-node .result-inner{position:relative;z-index:30;margin-top:0!important;padding:0 22px;}
+#res-card-node .result-kicker{font:700 11px Arial,sans-serif;letter-spacing:2px;color:#ffe6d2;margin:0 0 12px;}
+#res-card-node .result-tags{margin-bottom:22px!important;}
+#res-card-node .res-tag{border:1px solid rgba(255,255,255,.55);border-radius:8px;background:linear-gradient(135deg,#d84b4c,#8c3fd0);padding:7px 13px;font:700 13px Georgia,serif;box-shadow:0 3px 7px rgba(100,20,20,.18);}
+#res-card-node .res-bonus-box{margin:0 auto 26px;background:linear-gradient(180deg,#fff8ed,#fff 72%);border:0;border-radius:18px 18px 12px 12px;padding:22px 12px 24px;box-shadow:0 12px 0 rgba(164,47,23,.25),0 18px 24px rgba(113,30,13,.22);max-width:320px;}
+#res-card-node .res-label{font:700 15px Georgia,serif;color:#c36b54;letter-spacing:.3px;text-transform:none;margin-bottom:5px;}
+#res-card-node .res-amt{font:700 clamp(30px,8vw,40px) Georgia,serif;color:#c34f4c;letter-spacing:-1px;}
+#res-card-node .currency-mark{font-size:.82em;margin-right:3px;}
+#res-card-node .result-period-line{font:700 9px Arial,sans-serif;letter-spacing:1px;color:#a9a1a0;margin-top:10px;overflow-wrap:anywhere;}
+#res-card-node .result-period-line span{letter-spacing:.2px;color:#756a68;}
+#res-card-node .auto-close-line{display:flex;align-items:center;justify-content:flex-start;gap:9px;color:#ffe7d9;font:14px Georgia,serif;margin:0 auto;max-width:300px;}
+#res-card-node .auto-close-line input{appearance:none;width:22px;height:22px;border:1.5px solid rgba(255,255,255,.75);border-radius:50%;background:transparent;}
+#res-card-node .auto-close-line input:checked{background:#fff;border:6px solid #ffb26d;}
+#res-card-node .result-close{position:absolute;left:50%;bottom:-72px;transform:translateX(-50%);width:52px;height:52px;border:3px solid #fff;border-radius:50%;background:rgba(10,15,25,.3);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.22);}
+#res-card-node.loss-mode{background:linear-gradient(155deg,#64748b,#334155 55%,#1e293b);}
+#res-card-node.loss-mode .res-ribbon{background:linear-gradient(165deg,#aab5c4,#64748b 55%,#334155);}
+#res-card-node.loss-mode .res-medal{background:radial-gradient(circle at 35% 25%,#fff,#cbd5e1 55%,#64748b);color:#475569;}
+#res-card-node.loss-mode .res-bonus-box{background:#f8fafc;}
+#res-card-node.loss-mode .res-amt{color:#475569;}
+@media(max-height:680px){#res-card-node.result-card{transform:scale(.88);}}
+/* Screenshot-matched win result: compact portrait card, winged rocket medal and curved bonus ticket. */
+#result-overlay.result-container{z-index:5000!important;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.62)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding:28px 12px 52px!important;}
+#res-card-node.result-card{position:relative;width:min(72vw,390px)!important;max-width:390px!important;min-height:0!important;height:auto!important;border-radius:27px!important;padding:0 0 38px!important;overflow:visible!important;background:linear-gradient(160deg,#ff9d5b 0%,#ff6a4e 49%,#ef403b 100%)!important;box-shadow:0 16px 40px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.35)!important;}
+#res-card-node .res-header-bg{height:clamp(112px,19vh,160px)!important;padding:0 8px 10px!important;display:flex!important;align-items:flex-end!important;justify-content:center!important;background:transparent!important;}
+#res-card-node .res-title-text{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(23px,5.6vw,37px)!important;line-height:1.12!important;letter-spacing:0!important;font-weight:700!important;text-transform:none!important;color:#fff!important;text-shadow:0 2px 2px rgba(130,38,20,.15)!important;}
+#res-card-node .res-ribbon{top:-25px!important;width:100%!important;height:145px!important;left:50%!important;transform:translateX(-50%)!important;clip-path:polygon(0 55%,10% 45%,23% 38%,31% 17%,39% 30%,50% 23%,61% 30%,69% 17%,77% 38%,90% 45%,100% 55%,91% 82%,9% 82%)!important;background:linear-gradient(180deg,#ffcc8b 0%,#ff963f 52%,#ed6b35 100%)!important;filter:drop-shadow(0 7px 5px rgba(120,35,12,.3))!important;}
+#res-card-node .res-wing{position:absolute;top:27px;width:34%;height:75px;background:linear-gradient(180deg,#fff2d9,#f7c5a5);opacity:.98;z-index:1;filter:drop-shadow(0 3px 2px rgba(130,55,20,.18));}
+#res-card-node .res-wing-left{left:2%;clip-path:polygon(100% 0,75% 14%,88% 30%,55% 28%,75% 50%,42% 45%,63% 68%,22% 62%,45% 88%,0 80%,25% 100%,100% 90%);}
+#res-card-node .res-wing-right{right:2%;transform:scaleX(-1);clip-path:polygon(100% 0,75% 14%,88% 30%,55% 28%,75% 50%,42% 45%,63% 68%,22% 62%,45% 88%,0 80%,25% 100%,100% 90%);}
+#res-card-node .res-medal{z-index:3!important;top:0!important;width:clamp(86px,17vw,116px)!important;height:clamp(86px,17vw,116px)!important;border-width:7px!important;background:radial-gradient(circle at 34% 24%,#fff9d6 0,#ffd35b 42%,#f49a19 74%,#c76a0c 100%)!important;color:#fff!important;font-size:clamp(34px,7vw,48px)!important;}
+#res-card-node .result-inner{margin-top:0!important;padding:0 clamp(14px,4vw,24px)!important;}
+#res-card-node .result-kicker{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(12px,2.5vw,17px)!important;letter-spacing:0!important;text-transform:none!important;color:#ffe8d8!important;margin:0 0 12px!important;}
+#res-card-node .result-tags{gap:7px!important;margin:0 0 20px!important;}
+#res-card-node .res-tag{min-width:34px!important;padding:6px 11px!important;border:1px solid rgba(255,255,255,.65)!important;border-radius:8px!important;background:linear-gradient(135deg,#d84b4c 0%,#8f42c9 100%)!important;color:#fff!important;font:16px Georgia,'Times New Roman',serif!important;box-shadow:0 3px 7px rgba(100,20,20,.18)!important;}
+#res-card-node .res-bonus-box{position:relative!important;max-width:320px!important;width:100%!important;min-height:110px!important;margin:0 auto 30px!important;padding:20px 12px 25px!important;border:0!important;border-radius:0!important;background:linear-gradient(180deg,#fff0e8 0%,#fff 28%,#fff 100%)!important;clip-path:polygon(7% 0,93% 0,94% 14%,97% 70%,100% 100%,0 100%,3% 70%,6% 14%)!important;box-shadow:0 11px 0 rgba(164,47,23,.25),0 18px 24px rgba(113,30,13,.22)!important;}
+#res-card-node .res-label{font:16px Georgia,'Times New Roman',serif!important;color:#c36b54!important;text-transform:none!important;letter-spacing:0!important;margin:0 0 4px!important;}
+#res-card-node .res-amt{font:700 clamp(29px,7vw,41px) Georgia,'Times New Roman',serif!important;color:#c34f4c!important;letter-spacing:-1px!important;line-height:1.1!important;}
+#res-card-node .result-period-line{display:none!important;}
+#res-card-node .auto-close-line{max-width:300px!important;margin:0 auto!important;justify-content:flex-start!important;gap:9px!important;font:clamp(12px,2.8vw,16px) Georgia,'Times New Roman',serif!important;color:#ffe7d9!important;}
+#res-card-node .auto-close-line input{width:22px!important;height:22px!important;flex:0 0 22px!important;border:1.5px solid rgba(255,255,255,.85)!important;border-radius:50%!important;background:transparent!important;}
+#res-card-node .auto-close-line input:checked{background:#fff!important;border:6px solid #ffb26d!important;}
+#res-card-node .result-close{left:50%!important;bottom:-63px!important;width:48px!important;height:48px!important;border:3px solid #fff!important;background:rgba(0,0,0,.18)!important;color:#fff!important;font-size:30px!important;}
+#res-card-node.loss-mode{background:linear-gradient(160deg,#ff9d5b 0%,#ff6a4e 49%,#ef403b 100%)!important;}
+#res-card-node.loss-mode .res-label:after{content:'';}
+@media(max-width:380px){#res-card-node.result-card{width:min(78vw,330px)!important;}#res-card-node .res-header-bg{height:125px!important;}#res-card-node .res-ribbon{height:125px!important;}#res-card-node .res-bonus-box{min-height:96px!important;padding-top:16px!important;}}
+@media(max-height:650px){#res-card-node.result-card{transform:scale(.84);}}
+
+
+/* FIX: show the complete last-five result images without clipping. */
+.latest-results{display:flex!important;align-items:center!important;gap:5px!important;overflow:visible!important;flex-wrap:nowrap!important;}
+.latest-results .result-dot{width:27px!important;height:27px!important;min-width:27px!important;flex:0 0 27px!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:transparent!important;padding:0!important;box-sizing:border-box!important;}
+.latest-results .result-dot img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;display:block!important;background:transparent!important;}
+@media(max-width:380px){.latest-results{gap:4px!important}.latest-results .result-dot{width:23px!important;height:23px!important;min-width:23px!important;flex-basis:23px!important;}}
+/* FIX: the result popup is controlled by a class so CSS cannot hide it after JS opens it. */
+#result-overlay.result-container{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;z-index:99999!important;}
+#result-overlay.result-container.show-result{display:flex!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;z-index:99999!important;}
+#result-overlay.show-result #res-card-node{display:block!important;visibility:visible!important;opacity:1!important;}
+#res-card-node .result-close{z-index:100000!important;cursor:pointer!important;}
+</style>
 
 <script>
 function openStarLightPage(page) {
@@ -822,6 +961,7 @@ async function fetchExternalData() {
                 color:getWinningColors(item.number),
                 size:parseInt(item.number,10)>=5?'Big':'Small'
             }));
+            renderLatestResults();
             renderRecords();
             renderChart();
         }
@@ -831,6 +971,21 @@ async function fetchExternalData() {
         fetchInProgress = false;
     }
 }
+
+function renderLatestResults() {
+    const box = document.getElementById('latest-results');
+    if (!box) return;
+    const imageSources = Array.from(document.querySelectorAll('.number-image-btn img')).map(img => img.src);
+    box.innerHTML = historyData.slice(0,5).map(item => {
+        const color = item.color && item.color[0] ? item.color[0] : '#b88a3b';
+        const image = imageSources[item.num];
+        return image
+            ? `<span class="result-dot" title="${item.num}"><img src="${image}" alt="${item.num}" loading="eager"></span>`
+            : `<span class="result-dot" style="color:${color}">${item.num}</span>`;
+    }).join('');
+    if (!historyData.length) box.innerHTML = '<span class="result-dot">-</span>'.repeat(5);
+}
+
 
 function getWinningColors(n) {
     n = parseInt(n);
@@ -855,6 +1010,15 @@ function renderRecords() {
 }
 
 function renderChart() {
+    const stats = document.getElementById('chart-statistics');
+    if (stats) {
+        const recent = historyData.slice(0,100);
+        const counts = Array.from({length:10}, (_, n) => recent.filter(h => Number(h.num) === n).length);
+        const total = recent.length;
+        const winner = counts.indexOf(Math.max(0, ...counts));
+        const missing = counts.map((count,n) => count === 0 ? n : null).filter(n => n !== null);
+        stats.innerHTML = `<div><strong>Statistics (Last ${total} Periods)</strong></div><div class="mt-1">Winning number: <strong>${total ? winner : '-'}</strong> &nbsp; Missing: <strong>${missing.length ? missing.join(', ') : 'None'}</strong></div><div class="chart-stat-grid">${counts.map((count,n)=>`<div class="chart-stat-cell"><b>${n}</b><small>${count} times</small></div>`).join('')}</div>`;
+    }
     const container = document.getElementById('chart-list');
     let html = '<canvas id="canvas-trend" style="position:absolute;top:0;left:0;pointer-events:none;z-index:1;"></canvas>';
 
@@ -1142,13 +1306,22 @@ function showNewResultPopup(win,amt,prd,colors,num,size) {
 
     if (win) {
         card.classList.remove('loss-mode');
-        document.getElementById('res-title-node').innerText = "WINNER";
+        document.getElementById('res-title-node').innerText = "Congratulations";
+        document.getElementById('res-label-node').innerText = "Bonus";
     } else {
         card.classList.add('loss-mode');
-        document.getElementById('res-title-node').innerText = "LOSS";
+        document.getElementById('res-title-node').innerText = "Better Luck Next Time";
+        document.getElementById('res-label-node').innerText = "Result";
     }
 
-    document.getElementById('result-overlay').style.display = 'flex';
+    document.getElementById('result-overlay').classList.add('show-result');
+    const autoClose = document.getElementById('result-auto-close');
+    if (autoClose) autoClose.checked = false;
+    clearTimeout(window.__resultAutoCloseTimer);
+    if (autoClose) autoClose.onchange = () => {
+        clearTimeout(window.__resultAutoCloseTimer);
+        if (autoClose.checked) window.__resultAutoCloseTimer = setTimeout(closeResultPopup, 3000);
+    };
 }
 
 function setMainMultiplier(value, element) {
@@ -1159,8 +1332,51 @@ function setMainMultiplier(value, element) {
     updatePopupTotal();
 }
 
+let randomSpinTimer = null;
+let randomSpinResult = null;
 function randomBet() {
-    const number = Math.floor(Math.random() * 10);
+    const overlay = document.getElementById('random-spin-overlay');
+    if (!overlay) return;
+    const imageSources = Array.from(document.querySelectorAll('.number-image-btn img')).map(img => img.currentSrc || img.src);
+    if (imageSources.length < 10) { showToast('Number images are not ready'); return; }
+    clearInterval(randomSpinTimer);
+    randomSpinResult = Math.floor(Math.random() * 10);
+    overlay.classList.add('active','spinning');
+    overlay.setAttribute('aria-hidden','false');
+    document.getElementById('spin-use-btn').disabled = true;
+    document.getElementById('random-spin-caption').textContent = 'Number spinning...';
+    const balls = ['spin-ball-a','spin-ball-b','spin-ball-c'].map(id => document.getElementById(id));
+    let ticks = 0;
+    const spinFor = 24;
+    randomSpinTimer = setInterval(() => {
+        ticks++;
+        balls.forEach((ball, index) => {
+            const n = Math.floor(Math.random()*10);
+            const img = ball.querySelector('img');
+            img.src = imageSources[n]; img.alt = String(n);
+        });
+        if (ticks >= spinFor) {
+            clearInterval(randomSpinTimer); randomSpinTimer = null;
+            overlay.classList.remove('spinning');
+            const resultImage = imageSources[randomSpinResult];
+            balls.forEach((ball, index) => {
+                const n = index === 1 ? randomSpinResult : Math.floor(Math.random()*10);
+                const img = ball.querySelector('img'); img.src = imageSources[n]; img.alt = String(n);
+            });
+            document.getElementById('random-spin-caption').textContent = 'Your number: ' + randomSpinResult;
+            document.getElementById('spin-use-btn').disabled = false;
+        }
+    }, 85);
+}
+function closeRandomSpin() {
+    clearInterval(randomSpinTimer); randomSpinTimer = null;
+    const overlay = document.getElementById('random-spin-overlay');
+    if (overlay) { overlay.classList.remove('active','spinning'); overlay.setAttribute('aria-hidden','true'); }
+}
+function useRandomResult() {
+    if (randomSpinResult === null) return;
+    const number = randomSpinResult;
+    closeRandomSpin();
     const color = number === 0 || number === 5 ? '#8b5cf6' : (number % 2 === 0 ? '#ef4444' : '#10b981');
     openBet(String(number), color);
 }
@@ -1271,7 +1487,8 @@ function closePopups() {
 }
 
 function closeResultPopup() {
-    document.getElementById('result-overlay').style.display = 'none';
+    clearTimeout(window.__resultAutoCloseTimer);
+    document.getElementById('result-overlay').classList.remove('show-result');
 }
 
 function switchTab(t) {
