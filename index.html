@@ -440,6 +440,59 @@ body {
 .text-green-100 { color:#fbf0d5!important; }
 .bg-\[--primary-green\] { background-color:#b88a3b!important; }
 .text-\[--primary-green\] { color:#b88a3b!important; }
+
+/* Compact video-inspired layout; retain the original game palette on a white page */
+body{background:#f8fafc!important;color:#334155!important;padding-bottom:18px}
+.gradient-main{background:var(--dk-gradient)!important;border:0;box-shadow:0 6px 18px rgba(15,23,42,.10)}
+.gradient-main.rounded-b-\[40px\]{border-radius:0 0 22px 22px!important;padding:12px 14px!important}
+.brand-wrap{padding:0}.brand-logo{font-size:24px}.brand-logo .brand-star{font-size:19px}
+.brand-line{display:none}
+.gradient-main .bg-white{background:#fff!important;border:1px solid #e7ca83;border-radius:16px!important;padding:12px!important;box-shadow:0 3px 12px rgba(15,23,42,.06)!important}
+.gradient-main .text-slate-800{color:#1e293b!important}
+.gradient-main .text-gray-400{color:#94a3b8!important}
+.gradient-main .text-4xl{font-size:28px;margin-bottom:10px!important}
+.gradient-main .flex.gap-4{gap:8px}
+.gradient-main .flex.gap-4 button{padding:9px 8px!important;border-radius:10px!important}
+.grid.grid-cols-4{background:#f8fafc;margin:0!important;padding:10px 12px!important;gap:7px!important}
+.mode-btn{background:#fff!important;border:1px solid #e2e8f0!important;border-radius:10px!important;padding:9px 4px!important;color:#334155}
+.mode-btn p{color:#64748b!important}.mode-btn i{font-size:17px!important;color:#94a3b8!important}
+.mode-btn-active{background:#fff!important;border:2px solid var(--primary-green)!important;transform:none!important}
+.mode-btn-active p,.mode-btn-active i{color:var(--primary-green)!important}
+.gradient-main.mx-4{margin:0 12px!important;border-radius:12px!important;padding:13px 14px!important;background:var(--dk-gradient)!important}
+#current-period{font-size:13px!important;letter-spacing:.3px!important}
+#timer-display{font-size:30px!important;color:#fff!important}
+.text-green-100{color:#fbf0d5!important}
+.relative.p-4.mt-2{padding:10px 12px!important;margin-top:0!important;background:#f8fafc}
+.betting-area{gap:10px!important}
+.bet-btn{border-radius:9px!important;box-shadow:none!important;border:1px solid rgba(255,255,255,.18)}
+.betting-area>.flex.gap-3:first-child button{padding:11px 5px!important;font-size:13px!important}
+.betting-area .bg-white{background:#fff!important;border:1px solid #e2e8f0!important;border-radius:14px!important;padding:12px!important}
+.grid.grid-cols-5{gap:10px!important;margin-bottom:12px!important}
+.number-image-btn{width:100%;height:54px;min-width:0;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;display:flex;align-items:center;justify-content:center;box-shadow:none!important;overflow:visible}
+.number-image-btn img{display:block;width:54px;height:54px;max-width:100%;object-fit:contain;pointer-events:none}
+.betting-area .flex.gap-3 button[onclick*="Big"],.betting-area .flex.gap-3 button[onclick*="Small"]{padding:10px!important}
+.px-4.mt-2{padding:0 12px!important;margin-top:0!important;background:#f8fafc}
+.bg-slate-200.rounded-t-2xl{background:#fff!important;border:1px solid #e2e8f0;border-bottom:0}
+.bg-slate-200.rounded-t-2xl button{color:#334155!important;font-size:12px;padding:10px 5px!important}
+.tab-active{background:var(--primary-green)!important;color:#fff!important;border-radius:8px!important}
+#content-chart,#content-records,#content-my{background:#fff!important;color:#334155!important;border:1px solid #e2e8f0;border-top:0}
+.chart-row{border-color:#e2e8f0;padding:9px 0}
+.num-circle{background:#fff;color:#64748b;border-color:#cbd5e1}
+.history-card{border-color:#f1f5f9}
+.history-card .text-slate-700{color:#334155!important}.history-card .text-gray-400{color:#94a3b8!important}
+#content-records th,#content-records td{color:#334155;border-color:#f1f5f9}
+#bet-popup{background:#fff;color:#334155;border:1px solid #e2e8f0}
+#bet-popup .font-bold.text-gray-700{color:#334155!important}
+#bet-popup .btn-val{background:#f4f4f5;color:#334155;border-color:#e2e8f0}
+#bet-popup .btn-val.active{background:var(--primary-green);color:#fff;border-color:var(--primary-green)}
+#bet-popup .bg-gray-100{background:#f1f5f9!important;color:#64748b!important}
+#toast-msg{background:#fff;border-color:var(--primary-green);color:#334155}
+#quick-bet-controls{display:flex;gap:5px!important;align-items:center;white-space:nowrap;overflow-x:auto;padding:1px 0 5px}
+.quick-random,.quick-mult{font-size:10px;font-weight:900;border-radius:6px;padding:8px 7px;flex:1;min-width:0;background:#f4f4f5;color:#334155;border:1px solid #e2e8f0}
+.quick-random{background:var(--primary-green);color:#fff;border-color:var(--primary-green)}
+.quick-mult.active{background:var(--primary-green);color:#fff;border-color:var(--primary-green)}
+@media(max-width:380px){.brand-logo{font-size:21px}.number-image-btn,.number-image-btn img{height:48px;width:48px}.grid.grid-cols-5{gap:7px!important}.quick-random,.quick-mult{padding:7px 4px;font-size:9px}}
+
 </style>
 </head>
 
@@ -481,10 +534,10 @@ body {
         </div>
 
         <div class="flex gap-4">
-            <button class="flex-1 bg-slate-100 text-slate-700 font-bold py-3.5 rounded-2xl">
+            <button onclick="openStarLightPage('withdraw')" class="flex-1 bg-slate-100 text-slate-700 font-bold py-3.5 rounded-2xl">
                 Withdraw
             </button>
-            <button class="flex-1 bg-[--primary-green] text-white font-bold py-3.5 rounded-2xl shadow-lg">
+            <button onclick="openStarLightPage('deposit')" class="flex-1 bg-[--primary-green] text-white font-bold py-3.5 rounded-2xl shadow-lg">
                 Deposit
             </button>
         </div>
@@ -492,13 +545,13 @@ body {
 </div>
 
 <div class="grid grid-cols-4 gap-2 p-4">
-    <button onclick="switchMode('30s')" id="btn-30s" class="mode-btn bg-white rounded-2xl p-3 shadow-sm border-2 border-transparent flex flex-col items-center justify-center transition-all">
+    <button onclick="switchMode('30s')" id="btn-30s" class="mode-btn mode-btn-active bg-white rounded-2xl p-3 shadow-sm border-2 border-transparent flex flex-col items-center justify-center transition-all">
         <i class="fa-solid fa-clock text-2xl mb-1 text-gray-400"></i>
         <p class="text-[11px] font-black uppercase tracking-tighter text-gray-400">Win Go</p>
         <p class="text-[10px] font-bold text-gray-400">30s</p>
     </button>
 
-    <button onclick="switchMode('1m')" id="btn-1m" class="mode-btn mode-btn-active bg-white rounded-2xl p-3 shadow-sm border-2 border-transparent flex flex-col items-center justify-center transition-all">
+    <button onclick="switchMode('1m')" id="btn-1m" class="mode-btn bg-white rounded-2xl p-3 shadow-sm border-2 border-transparent flex flex-col items-center justify-center transition-all">
         <i class="fa-solid fa-clock text-2xl mb-1 text-[--primary-green]"></i>
         <p class="text-[11px] font-black uppercase tracking-tighter">Win Go</p>
         <p class="text-[10px] font-bold">1m</p>
@@ -519,7 +572,7 @@ body {
 
 <div class="gradient-main mx-4 rounded-3xl p-5 shadow-xl flex justify-between items-center relative overflow-hidden">
     <div class="z-10">
-        <p id="display-mode-label" class="text-[10px] font-bold text-green-100 uppercase mb-2 tracking-widest">Win Go 1m</p>
+        <p id="display-mode-label" class="text-[10px] font-bold text-green-100 uppercase mb-2 tracking-widest">Win Go 30s</p>
         <p id="current-period" class="text-lg font-bold tracking-tighter text-white">Loading...</p>
     </div>
 
@@ -545,16 +598,26 @@ body {
 
         <div class="bg-white p-5 rounded-[30px] shadow-md border border-gray-200">
             <div class="grid grid-cols-5 gap-4 mb-6">
-                <button onclick="openBet('0','#8b5cf6')" class="bet-btn ball" style="background:#8b5cf6">0</button>
-                <button onclick="openBet('1','#10b981')" class="bet-btn ball" style="background:#10b981">1</button>
-                <button onclick="openBet('2','#ef4444')" class="bet-btn ball" style="background:#ef4444">2</button>
-                <button onclick="openBet('3','#10b981')" class="bet-btn ball" style="background:#10b981">3</button>
-                <button onclick="openBet('4','#ef4444')" class="bet-btn ball" style="background:#ef4444">4</button>
-                <button onclick="openBet('5','#10b981')" class="bet-btn ball" style="background:#10b981">5</button>
-                <button onclick="openBet('6','#ef4444')" class="bet-btn ball" style="background:#ef4444">6</button>
-                <button onclick="openBet('7','#10b981')" class="bet-btn ball" style="background:#10b981">7</button>
-                <button onclick="openBet('8','#ef4444')" class="bet-btn ball" style="background:#ef4444">8</button>
-                <button onclick="openBet('9','#10b981')" class="bet-btn ball" style="background:#10b981">9</button>
+                <button type="button" onclick="openBet('0','#8b5cf6 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 0"><img src="https://i.ibb.co.com/bjQtLGDd/Picsart-26-11-13-08-21-52-149.png" alt="0" loading="eager" decoding="async"></button>
+                <button type="button" onclick="openBet('1','#10b981 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 1"><img src="https://i.ibb.co.com/kVn4Q5n7/Picsart-26-11-13-08-22-36-975.png" alt="1" loading="eager" decoding="async"></button>
+                <button type="button" onclick="openBet('2','#ef4444 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 2"><img src="https://i.ibb.co.com/j9ZP073W/Picsart-26-11-13-08-23-21-303.png" alt="2" loading="eager" decoding="async"></button>
+                <button type="button" onclick="openBet('3','#10b981 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 3"><img src="https://i.ibb.co.com/DjPhqJ7/Picsart-26-11-13-08-24-17-589.png" alt="3" loading="eager" decoding="async"></button>
+                <button type="button" onclick="openBet('4','#ef4444 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 4"><img src="https://i.ibb.co.com/GfqqKDNK/Picsart-26-11-13-08-29-20-722.png" alt="4" loading="eager" decoding="async"></button>
+                <button type="button" onclick="openBet('5','#8b5cf6 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 5"><img src="https://i.ibb.co.com/LhHHWQ0c/Picsart-26-11-13-08-29-51-166.png" alt="5" loading="eager" decoding="async"></button>
+                <button type="button" onclick="openBet('6','#ef4444 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 6"><img src="https://i.ibb.co.com/pjrQ1mZx/Picsart-26-11-13-08-30-28-747.png" alt="6" loading="eager" decoding="async"></button>
+                <button type="button" onclick="openBet('7','#10b981 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 7"><img src="https://i.ibb.co.com/9QDw71R/Picsart-26-11-13-08-26-58-607.png" alt="7" loading="eager" decoding="async"></button>
+                <button type="button" onclick="openBet('8','#ef4444 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 8"><img src="https://i.ibb.co.com/HTzs8hvX/Picsart-26-11-13-08-49-14-145.png" alt="8" loading="eager" decoding="async"></button>
+                <button type="button" onclick="openBet('9','#10b981 '.trim())" class="bet-btn ball number-image-btn" aria-label="Bet 9"><img src="https://i.ibb.co.com/fVjfCZVj/Picsart-26-11-13-08-27-50-149.png" alt="9" loading="eager" decoding="async"></button>
+            </div>
+
+            <div class="flex items-center gap-1.5 mb-3" id="quick-bet-controls">
+                <button onclick="randomBet()" class="quick-random">Random</button>
+                <button onclick="setMainMultiplier(1,this)" class="quick-mult active">X1</button>
+                <button onclick="setMainMultiplier(5,this)" class="quick-mult">X5</button>
+                <button onclick="setMainMultiplier(10,this)" class="quick-mult">X10</button>
+                <button onclick="setMainMultiplier(20,this)" class="quick-mult">X20</button>
+                <button onclick="setMainMultiplier(50,this)" class="quick-mult">X50</button>
+                <button onclick="setMainMultiplier(100,this)" class="quick-mult">X100</button>
             </div>
 
             <div class="flex gap-3">
@@ -597,7 +660,7 @@ body {
 
 <div id="bet-popup">
     <div id="pop-header" class="popup-top-shape">
-        <div id="pop-title" class="text-sm font-bold uppercase">Win Go 1m</div>
+        <div id="pop-title" class="text-sm font-bold uppercase">Win Go 30s</div>
         <div class="select-box">Select <span id="popup-selection">Big</span></div>
     </div>
 
@@ -671,6 +734,17 @@ body {
 </div>
 
 <script>
+function openStarLightPage(page) {
+    try {
+        if (window.parent && window.parent !== window && typeof window.parent.nav === 'function') {
+            window.parent.nav(page);
+            return;
+        }
+    } catch (e) { console.warn('Parent navigation unavailable:', e); }
+    // This game is normally launched inside StarLight's game frame. Do not guess a route when standalone.
+    alert('Please open this game from the StarLight app to access ' + (page === 'deposit' ? 'Deposit' : 'Withdraw') + '.');
+}
+
 // FIREBASE CONFIG
 const firebaseConfig = {
     apiKey: "AIzaSyAy9PPm5UJpuhxfuPhNgqsUOOBFXXlmzU8",
@@ -690,11 +764,14 @@ if (!firebase.apps.length) {
 const db = firebase.database();
 
 let userPhone = "Guest";
-let balance = 0, currentMode = '1m';
+let balance = 0, currentMode = '30s';
 let baseAmount = 1, multiplier = 1, qty = 1;
 let historyData = [], currentPeriod = "", lastFetchedPeriod = "";
 let tempBetPick = "";
 let historyRef = null;
+let lastReconcileAt = 0;
+let fetchInProgress = false;
+let reconcileInProgress = false;
 
 const apiUrls = {
     '30s':'https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json',
@@ -706,53 +783,52 @@ const apiUrls = {
 const modeSeconds = {'30s':30,'1m':60,'3m':180,'5m':300};
 
 async function fetchExternalData() {
+    if (fetchInProgress) return;
+    fetchInProgress = true;
     try {
-        const response = await fetch(apiUrls[currentMode],{cache:"no-store"});
+        const response = await fetch(apiUrls[currentMode], {cache:"no-store"});
+        if (!response.ok) throw new Error('Result server returned ' + response.status);
         const data = await response.json();
-
-        if (data && data.data && data.data.list) {
+        if (data && data.data && Array.isArray(data.data.list) && data.data.list.length) {
             const list = data.data.list;
             const latest = list[0];
-
-            currentPeriod = (BigInt(latest.issueNumber)+1n).toString();
+            currentPeriod = (BigInt(latest.issueNumber) + 1n).toString();
             document.getElementById('current-period').innerText = currentPeriod;
 
-            if (lastFetchedPeriod !== "" && lastFetchedPeriod !== latest.issueNumber) {
-                checkBetResults(latest.issueNumber,latest.number);
+            // Reconcile pending bets against every returned settled period, including after refresh/reconnect.
+            // This avoids depending on observing one exact period-change request.
+            if (Date.now() - lastReconcileAt >= 4000) {
+                lastReconcileAt = Date.now();
+                reconcilePendingBets(list);
             }
-
             lastFetchedPeriod = latest.issueNumber;
 
             const now = new Date();
-            const secondsToday = now.getHours()*3600+now.getMinutes()*60+now.getSeconds();
+            const secondsToday = now.getHours()*3600 + now.getMinutes()*60 + now.getSeconds();
             const duration = modeSeconds[currentMode];
-            const timeLeft = duration-(secondsToday%duration);
-
-            document.getElementById('timer-sec').innerText = String(timeLeft%60).padStart(2,'0');
-            document.getElementById('timer-min').innerText = String(Math.floor(timeLeft/60)).padStart(2,'0');
-
+            const timeLeft = duration - (secondsToday % duration);
+            document.getElementById('timer-sec').innerText = String(timeLeft % 60).padStart(2,'0');
+            document.getElementById('timer-min').innerText = String(Math.floor(timeLeft / 60)).padStart(2,'0');
             const lock = document.getElementById('bet-lock-overlay');
-
             if (timeLeft <= 5) {
                 lock.style.display = 'flex';
                 document.getElementById('lock-count-num').innerText = timeLeft;
                 if (timeLeft === 1) closePopups();
-            } else {
-                lock.style.display = 'none';
-            }
+            } else lock.style.display = 'none';
 
             historyData = list.map(item => ({
                 period:item.issueNumber,
-                num:item.number,
+                num:Number(item.number),
                 color:getWinningColors(item.number),
-                size:parseInt(item.number)>=5?'Big':'Small'
+                size:parseInt(item.number,10)>=5?'Big':'Small'
             }));
-
             renderRecords();
             renderChart();
         }
     } catch(error) {
-        console.error(error);
+        console.error('Win Go data fetch failed:', error);
+    } finally {
+        fetchInProgress = false;
     }
 }
 
@@ -782,7 +858,7 @@ function renderChart() {
     const container = document.getElementById('chart-list');
     let html = '<canvas id="canvas-trend" style="position:absolute;top:0;left:0;pointer-events:none;z-index:1;"></canvas>';
 
-    historyData.slice(0,15).forEach(h => {
+    historyData.slice(0,100).forEach(h => {
         html += `<div class="chart-row">
             <div class="text-slate-400 font-mono text-[9px]">${h.period.toString().slice(-4)}</div>
             <div></div>
@@ -834,6 +910,7 @@ function drawTrendLine() {
 function switchMode(m) {
     currentMode = m;
     lastFetchedPeriod = "";
+    lastReconcileAt = 0;
 
     document.querySelectorAll('.mode-btn').forEach(b =>
         b.classList.remove('mode-btn-active')
@@ -848,126 +925,216 @@ function switchMode(m) {
 }
 
 function loadMyHistory() {
-    if (userPhone==="Guest") return;
-    if (historyRef) historyRef.off();
+    const listDiv = document.getElementById('my-history-list');
+    if (!listDiv) return;
 
-    db.ref(`userBets/${userPhone}/${currentMode}`)
-        .orderByChild('status')
-        .equalTo('Pending')
-        .once('value',snapshot => {
-            if (snapshot.exists()) fetchExternalData();
-        });
+    if (historyRef) {
+        historyRef.off('value');
+        historyRef = null;
+    }
 
-    historyRef = db.ref(`userBets/${userPhone}/${currentMode}`).limitToLast(20);
+    if (userPhone === "Guest") {
+        listDiv.innerHTML = '<p class="p-4 text-center text-gray-400">Please login to view your bets</p>';
+        return;
+    }
 
-    historyRef.on('value',snap => {
-        const listDiv = document.getElementById('my-history-list');
+    const modeAtLoad = currentMode;
+    const path = `userBets/${userPhone}/${modeAtLoad}`;
+    historyRef = db.ref(path);
+
+    // Listen to the complete bet collection, not only Pending bets or the latest item.
+    historyRef.on('value', snap => {
+        // Ignore an old-mode callback after the user switches game mode.
+        if (modeAtLoad !== currentMode) return;
 
         if (!snap.exists()) {
-            listDiv.innerHTML = '<p class="p-4 text-center">No history found</p>';
+            listDiv.innerHTML = '<p class="p-4 text-center text-gray-400">No history found</p>';
             return;
         }
 
         const list = [];
-        snap.forEach(c => list.push(c.val()));
-        list.sort((a,b) => b.time-a.time);
+        snap.forEach(child => {
+            const bet = child.val() || {};
+            list.push({
+                ...bet,
+                _key: child.key,
+                time: Number(bet.time) || 0
+            });
+        });
+
+        // Newest bets first; use the Firebase key as a stable tie-breaker.
+        list.sort((a, b) => (b.time - a.time) || String(b._key).localeCompare(String(a._key)));
 
         listDiv.innerHTML = list.map(b => {
-            const isWin = b.status==='WIN';
-            const isPending = b.status==='Pending';
-            const timeStr = new Date(b.time).toLocaleString();
+            const pick = String(b.pick ?? '—');
+            const status = String(b.status ?? 'Pending');
+            const isWin = status.toUpperCase() === 'WIN';
+            const isPending = status.toLowerCase() === 'pending';
+            const timeStr = b.time ? new Date(b.time).toLocaleString() : 'Time unavailable';
 
-            const pickColor = (b.pick==='Big'||b.pick==='Small')
-                ? (b.pick==='Big'?'#f59e0b':'#0ea5e9')
-                : (b.pick==='Green'?'#10b981':(b.pick==='Red'?'#ef4444':'#8b5cf6'));
+            const pickColor = (pick === 'Big' || pick === 'Small')
+                ? (pick === 'Big' ? '#f59e0b' : '#0ea5e9')
+                : (pick === 'Green' ? '#10b981' : (pick === 'Red' ? '#ef4444' : '#8b5cf6'));
 
-            let badgeClass = isPending?'badge-pending':(isWin?'badge-success':'badge-failed');
-            let statusText = isPending?'Pending':(isWin?'Succeed':'Failed');
-            let amtColor = isPending?'history-val-pending':(isWin?'history-val-green':'history-val-red');
+            const badgeClass = isPending ? 'badge-pending' : (isWin ? 'badge-success' : 'badge-failed');
+            const statusText = isPending ? 'Pending' : (isWin ? 'Succeed' : 'Failed');
+            const amtColor = isPending ? 'history-val-pending' : (isWin ? 'history-val-green' : 'history-val-red');
+            const shownAmount = Number(isWin ? b.winAmount : b.amount) || 0;
 
             return `<div class="history-card">
-                <div class="flex items-center gap-3">
-                    <div class="pick-circle" style="background:${pickColor}">${b.pick}</div>
-                    <div>
-                        <div class="font-bold text-xs text-slate-700 flex items-center gap-1">
-                            ${b.period}
-                            <i class="fa-solid fa-caret-down text-[8px] opacity-40"></i>
-                        </div>
+                <div class="flex items-center gap-3 min-w-0">
+                    <div class="pick-circle shrink-0" style="background:${pickColor}">${pick}</div>
+                    <div class="min-w-0">
+                        <div class="font-bold text-xs text-slate-700 break-all">${String(b.period ?? '—')}</div>
                         <div class="text-[9px] text-gray-400 font-bold">${timeStr}</div>
+                        <div class="text-[9px] text-gray-400">Win Go ${modeAtLoad}</div>
                     </div>
                 </div>
-                <div class="text-right">
+                <div class="text-right shrink-0">
                     <div class="history-badge ${badgeClass}">${statusText}</div>
                     <div class="text-[11px] mt-1 ${amtColor}">
-                        ${isWin?'+':'-'}৳${isWin?parseFloat(b.winAmount).toFixed(2):parseFloat(b.amount).toFixed(2)}
+                        ${isWin ? '+' : (isPending ? '' : '-')}৳${shownAmount.toFixed(2)}
                     </div>
                 </div>
             </div>`;
         }).join('');
+    }, error => {
+        console.error('My History load failed:', error);
+        listDiv.innerHTML = '<p class="p-4 text-center text-red-500">History could not be loaded. Please try again.</p>';
     });
 }
 
-function checkBetResults(lastPeriod,winNum) {
-    if (userPhone==="Guest") return;
+function reconcilePendingBets(resultList) {
+    if (userPhone === "Guest" || !Array.isArray(resultList) || !resultList.length || reconcileInProgress) return;
+    const modeAtCheck = currentMode;
+    const resultByPeriod = new Map();
+    resultList.forEach(item => {
+        if (item && item.issueNumber != null && item.number != null) {
+            resultByPeriod.set(String(item.issueNumber), Number(item.number));
+        }
+    });
 
-    db.ref(`userBets/${userPhone}/${currentMode}`)
-        .orderByChild('period')
-        .equalTo(lastPeriod)
-        .once('value',snap => {
-            snap.forEach(child => {
-                const bet = child.val();
-                if (bet.status!=='Pending') return;
+    reconcileInProgress = true;
+    db.ref(`userBets/${userPhone}/${modeAtCheck}`).once('value')
+      .then(async snapshot => {
+        if (!snapshot.exists()) return;
+        let popupShown = false;
+        const jobs = [];
+        snapshot.forEach(child => {
+            const bet = child.val() || {};
+            const status = String(bet.status || 'Pending').toUpperCase();
+            const period = String(bet.period ?? '');
+            const hasResult = resultByPeriod.has(period);
 
-                const n = parseInt(winNum);
-                let isWin = false;
-                let payout = 0;
+            // New-format settled wins are retried until the balance credit is confirmed.
+            if ((status === 'WIN' || status === 'LOSS') && Number(bet.settlementVersion) === 2 && bet.balanceCredited !== true) {
+                jobs.push(settleOneBet(child.ref, bet, period, hasResult ? resultByPeriod.get(period) : null, child.key));
+                return;
+            }
+            if (status !== 'PENDING' || !hasResult) return;
 
-                if (!isNaN(bet.pick)) {
-                    if (parseInt(bet.pick)===n) {
-                        isWin = true;
-                        payout = 9;
-                    }
-                } else if (bet.pick==='Big') {
-                    if (n>=5) { isWin=true; payout=1.96; }
-                } else if (bet.pick==='Small') {
-                    if (n<=4) { isWin=true; payout=1.96; }
-                } else if (bet.pick==='Green') {
-                    isWin = [1,3,7,9].includes(n)?true:(n===5?true:false);
-                    payout = [1,3,7,9].includes(n)?1.96:1.5;
-                } else if (bet.pick==='Red') {
-                    isWin = [2,4,6,8].includes(n)?true:(n===0?true:false);
-                    payout = [2,4,6,8].includes(n)?1.96:1.5;
-                } else if (bet.pick==='Violet') {
-                    if ([0,5].includes(n)) { isWin=true; payout=4.5; }
+            const n = resultByPeriod.get(period);
+            jobs.push(settleOneBet(child.ref, bet, period, n, child.key).then(result => {
+                if (result && result.justSettled && !popupShown && modeAtCheck === currentMode) {
+                    popupShown = true;
+                    showNewResultPopup(result.isWin, result.amount, period, getWinningColors(n), n, n >= 5 ? 'Big' : 'Small');
                 }
-
-                if (isWin) {
-                    const winAmt = bet.amount*payout;
-                    db.ref(`users/${userPhone}/balance`).transaction(b => (b||0)+winAmt);
-
-                    child.ref.update({
-                        status:'WIN',
-                        winAmount:winAmt.toFixed(2)
-                    });
-
-                    showNewResultPopup(true,winAmt,lastPeriod,getWinningColors(n),n,n>=5?'Big':'Small');
-                } else {
-                    child.ref.update({
-                        status:'LOSS',
-                        winAmount:0
-                    });
-
-                    showNewResultPopup(false,bet.amount,lastPeriod,getWinningColors(n),n,n>=5?'Big':'Small');
-                }
-            });
+            }));
         });
+        await Promise.all(jobs);
+      })
+      .catch(error => console.error('Bet settlement check failed:', error))
+      .finally(() => { reconcileInProgress = false; });
+}
+
+async function settleOneBet(betRef, bet, period, winningNumber, betKey) {
+    try {
+        const statusNow = String(bet.status || 'Pending').toUpperCase();
+        let isWin, winAmount;
+
+        if (statusNow === 'PENDING') {
+            if (winningNumber === null || winningNumber === undefined || !Number.isFinite(Number(winningNumber))) return null;
+            const n = Number(winningNumber);
+            const pick = String(bet.pick);
+            isWin = false;
+            let payout = 0;
+            if (/^\d$/.test(pick)) {
+                isWin = Number(pick) === n; payout = 9;
+            } else if (pick === 'Big') {
+                isWin = n >= 5; payout = 1.96;
+            } else if (pick === 'Small') {
+                isWin = n <= 4; payout = 1.96;
+            } else if (pick === 'Green') {
+                isWin = [1,3,7,9,5].includes(n); payout = [1,3,7,9].includes(n) ? 1.96 : 1.5;
+            } else if (pick === 'Red') {
+                isWin = [2,4,6,8,0].includes(n); payout = [2,4,6,8].includes(n) ? 1.96 : 1.5;
+            } else if (pick === 'Violet') {
+                isWin = [0,5].includes(n); payout = 4.5;
+            }
+            const amount = Number(bet.amount) || 0;
+            winAmount = isWin ? Number((amount * payout).toFixed(2)) : 0;
+
+            // First save the final outcome. The version marker lets the retry path
+            // distinguish settlements made by this safe, idempotent flow.
+            const tx = await betRef.transaction(current => {
+                if (!current || String(current.status || 'Pending').toUpperCase() !== 'PENDING') return;
+                return {
+                    ...current,
+                    status: isWin ? 'WIN' : 'LOSS',
+                    winAmount: winAmount.toFixed(2),
+                    resultNumber: n,
+                    settledAt: Date.now(),
+                    settlementVersion: 2,
+                    balanceCredited: false
+                };
+            });
+            if (!tx.committed) {
+                const latest = tx.snapshot.val();
+                if (!latest || Number(latest.settlementVersion) !== 2 || latest.balanceCredited === true) return null;
+                bet = latest;
+                isWin = String(latest.status).toUpperCase() === 'WIN';
+                winAmount = Number(latest.winAmount) || 0;
+            }
+        } else {
+            isWin = statusNow === 'WIN';
+            winAmount = Number(bet.winAmount) || 0;
+        }
+
+        if (!isWin || winAmount <= 0) {
+            await betRef.update({balanceCredited:true});
+            return {isWin:false, amount:Number(bet.amount)||0, justSettled:statusNow==='PENDING'};
+        }
+
+        // Balance and payout ledger are changed in ONE user-node transaction.
+        // Re-running after a network interruption cannot credit the same bet twice.
+        const userRef = db.ref(`users/${userPhone}`);
+        const ledgerKey = String(betKey);
+        const creditTx = await userRef.transaction(current => {
+            if (!current) return;
+            const user = {...current};
+            const ledger = {...(user._processedBetPayouts || {})};
+            if (!ledger[ledgerKey]) {
+                user.balance = (Number(user.balance) || 0) + winAmount;
+                ledger[ledgerKey] = true;
+                user._processedBetPayouts = ledger;
+            }
+            return user;
+        });
+        if (!creditTx.committed) throw new Error('Balance payout transaction was not committed; it will retry.');
+
+        await betRef.update({balanceCredited:true});
+        return {isWin:true, amount:winAmount, justSettled:statusNow==='PENDING'};
+    } catch (error) {
+        console.error('Could not settle/credit bet:', period, error);
+        return null;
+    }
 }
 
 function showNewResultPopup(win,amt,prd,colors,num,size) {
     const card = document.getElementById('res-card-node');
 
     document.getElementById('pop-res-color').style.background = colors[0];
-    document.getElementById('pop-res-color').innerText = colors.length>1?"Two":"Single";
+    document.getElementById('pop-res-color').innerText = colors.length>1?"Violet Mix":(colors[0]==='#10b981'?'Green':'Red');
     document.getElementById('pop-res-num').innerText = num;
     document.getElementById('pop-res-size').innerText = size;
     document.getElementById('res-amount-node').innerText = parseFloat(amt).toFixed(2);
@@ -982,6 +1149,20 @@ function showNewResultPopup(win,amt,prd,colors,num,size) {
     }
 
     document.getElementById('result-overlay').style.display = 'flex';
+}
+
+function setMainMultiplier(value, element) {
+    multiplier = Number(value) || 1;
+    document.querySelectorAll('#quick-bet-controls .quick-mult').forEach(button => button.classList.remove('active'));
+    if (element) element.classList.add('active');
+    document.querySelectorAll('#bet-popup .mult-btn').forEach(button => button.classList.toggle('active', Number(button.textContent.replace('X','')) === multiplier));
+    updatePopupTotal();
+}
+
+function randomBet() {
+    const number = Math.floor(Math.random() * 10);
+    const color = number === 0 || number === 5 ? '#8b5cf6' : (number % 2 === 0 ? '#ef4444' : '#10b981');
+    openBet(String(number), color);
 }
 
 function openBet(pick,color) {
@@ -1021,16 +1202,25 @@ function confirmBet() {
                 return newT<0?0:newT;
             });
 
-            db.ref(`userBets/${userPhone}/${currentMode}`).push({
+            const betRecord = {
                 period:currentPeriod,
                 pick:tempBetPick,
                 amount:total,
                 status:'Pending',
                 time:Date.now()
-            });
+            };
 
-            showToast();
-            closePopups();
+            db.ref(`userBets/${userPhone}/${currentMode}`).push(betRecord)
+                .then(() => {
+                    // Refresh the visible list immediately; the Firebase listener also keeps it live.
+                    loadMyHistory();
+                    showToast();
+                    closePopups();
+                })
+                .catch(error => {
+                    console.error('Bet history save failed:', error);
+                    alert('Bet was charged but history could not be saved. Please contact support.');
+                });
         } else {
             alert("Balance mismatch error!");
         }
@@ -1110,7 +1300,8 @@ window.onload = () => {
         loadMyHistory();
     }
 
-    setInterval(fetchExternalData,1000);
+    fetchExternalData();
+    setInterval(fetchExternalData,2000);
 };
 </script>
 </body>
