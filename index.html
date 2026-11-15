@@ -794,6 +794,34 @@ body {
 }
 /* Chart result cards return to their previous appearance */
 </style>
+<style id="requested-my-history-win-green-and-success-navy">
+/* My History: winning amount and Succeed label green. */
+.history-val-green { color:#16a34a !important; }
+.badge-success { color:#16a34a !important; border-color:#16a34a !important; background:#f0fdf4 !important; }
+/* Bet confirmation toast keeps its navy-blue background. */
+#toast-msg { background:#142b52 !important; color:#ffffff !important; border-color:#29436a !important; }
+</style>
+
+<style id="my-history-reference-layout">
+/* My History rows styled to match the supplied reference screenshot only. */
+#content-my { background:#fff !important; padding:8px 10px !important; }
+#content-my #my-history-list { background:#fff; }
+#content-my .history-card { min-height:112px; padding:16px 10px; gap:10px; border-bottom:1px solid #f1f1f1; background:#fff; }
+#content-my .pick-circle { width:64px; height:64px; min-width:64px; border-radius:17px; font-size:14px; font-weight:800; }
+#content-my .history-period { color:#17212b; font-size:15px; line-height:1.35; font-weight:800; letter-spacing:.15px; overflow-wrap:anywhere; }
+#content-my .history-time { color:#929292; font-size:12px; line-height:1.5; font-weight:600; margin-top:3px; }
+#content-my .history-mode { display:none; }
+#content-my .history-badge { display:inline-flex; justify-content:center; align-items:center; min-width:104px; padding:8px 12px; border-radius:9px; font-size:13px; font-weight:800; text-transform:none; background:#fff; }
+#content-my .badge-success { color:#269b70 !important; border:1px solid #78bca5 !important; background:#fff !important; }
+#content-my .badge-failed { color:#c56e75 !important; border:1px solid #d9b7b9 !important; background:#fff !important; }
+#content-my .badge-pending { color:#c28d2e !important; border:1px solid #e4cf9b !important; background:#fff !important; }
+#content-my .history-amount { font-size:15px; font-weight:800; margin-top:8px; white-space:nowrap; }
+#content-my .history-val-green { color:#269b70 !important; }
+#content-my .history-val-red { color:#c56e75 !important; }
+#content-my .history-val-pending { color:#c28d2e !important; }
+@media (max-width:380px) { #content-my .pick-circle{width:56px;height:56px;min-width:56px;font-size:12px} #content-my .history-period{font-size:13px} #content-my .history-badge{min-width:84px;padding:7px 8px} #content-my .history-amount{font-size:13px} }
+</style>
+
 </head>  <body class="pb-24">  <div id="toast-msg">successfully!</div>  <div class="gradient-main p-5 rounded-b-[40px] shadow-lg">  
     <div class="flex justify-between items-center mb-6 text-white px-2">  <button onclick="window.history.back()">  
         <i class="fa-solid fa-chevron-left text-lg"></i>  
@@ -1412,29 +1440,29 @@ function loadMyHistory() {
             const status = String(b.status ?? 'Pending');  
             const isWin = status.toUpperCase() === 'WIN';  
             const isPending = status.toLowerCase() === 'pending';  
-            const timeStr = b.time ? new Date(b.time).toLocaleString() : 'Time unavailable';  
+            const timeStr = b.time ? (() => { const d = new Date(b.time); const pad = n => String(n).padStart(2,'0'); return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`; })() : 'Time unavailable';  
   
             const pickColor = (pick === 'Big' || pick === 'Small')  
                 ? (pick === 'Big' ? '#f59e0b' : '#0ea5e9')  
                 : (pick === 'Green' ? '#10b981' : (pick === 'Red' ? '#ef4444' : '#8b5cf6'));  
   
             const badgeClass = isPending ? 'badge-pending' : (isWin ? 'badge-success' : 'badge-failed');  
-            const statusText = isPending ? 'Pending' : (isWin ? 'Succeed' : 'Failed');  
+            const statusText = isPending ? 'Pending' : (isWin ? 'Win' : 'Lose');  
             const amtColor = isPending ? 'history-val-pending' : (isWin ? 'history-val-green' : 'history-val-red');  
             const shownAmount = Number(isWin ? b.winAmount : b.amount) || 0;  
   
             return `<div class="history-card">  
-                <div class="flex items-center gap-3 min-w-0">  
+                <div class="flex items-center gap-3 min-w-0 flex-1">  
                     <div class="pick-circle shrink-0" style="background:${pickColor}">${pick}</div>  
-                    <div class="min-w-0">  
-                        <div class="font-bold text-xs text-slate-700 break-all">${String(b.period ?? '—')}</div>  
-                        <div class="text-[9px] text-gray-400 font-bold">${timeStr}</div>  
-                        <div class="text-[9px] text-gray-400">Win Go ${modeAtLoad}</div>  
+                    <div class="min-w-0 flex-1">  
+                        <div class="history-period">${String(b.period ?? '—')}</div>  
+                        <div class="history-time">${timeStr}</div>  
+                        <div class="history-mode">Win Go ${modeAtLoad}</div>  
                     </div>  
                 </div>  
                 <div class="text-right shrink-0">  
                     <div class="history-badge ${badgeClass}">${statusText}</div>  
-                    <div class="text-[11px] mt-1 ${amtColor}">  
+                    <div class="history-amount ${amtColor}">  
                         ${isWin ? '+' : (isPending ? '' : '-')}৳${shownAmount.toFixed(2)}  
                     </div>  
                 </div>  
