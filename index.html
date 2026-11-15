@@ -188,11 +188,19 @@ body {
   
 .chart-row {  
     display:grid;  
-    grid-template-columns:2.5fr 1fr repeat(10,1fr) 1fr;  
+    grid-template-columns:210px 8px repeat(10,28px) 28px;  
+    min-width:526px;  
     align-items:center;  
     text-align:center;  
     border-bottom:1px solid #e2e8f0;  
     padding:12px 0;  
+}  
+#chart-list .chart-row > div:first-child {  
+    text-align:left;  
+    padding-left:10px;  
+    white-space:nowrap;  
+    font-size:11px;  
+    color:#1e293b;  
 }  
   
 .num-circle {  
@@ -659,7 +667,7 @@ body {
   border-radius: 8px !important;
 }
 .timer-heading {
-  font-size: 8px !important;
+  font-size: 9px !important;
   line-height: 1.15 !important;
   margin-bottom: 3px !important;
   letter-spacing: .65px !important;
@@ -820,6 +828,124 @@ body {
 #content-my .history-val-red { color:#c56e75 !important; }
 #content-my .history-val-pending { color:#c28d2e !important; }
 @media (max-width:380px) { #content-my .pick-circle{width:56px;height:56px;min-width:56px;font-size:12px} #content-my .history-period{font-size:13px} #content-my .history-badge{min-width:84px;padding:7px 8px} #content-my .history-amount{font-size:13px} }
+</style>
+
+
+<style id="chart-compact-one-screen-only">
+/* Compact Chart rows so the complete period and all result numbers fit on mobile */
+#content-chart #chart-list .chart-row {
+  grid-template-columns: minmax(100px, 1fr) 2px repeat(10, minmax(14px, 1fr)) 17px !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  column-gap: 0 !important;
+  padding: 1px 0 !important;
+}
+#content-chart #chart-list .chart-row > div:first-child {
+  min-width: 0 !important;
+  padding-left: 1px !important;
+  font-size: 8px !important;
+  letter-spacing: -0.3px !important;
+  white-space: nowrap !important;
+}
+#content-chart #chart-list .num-circle {
+  width: 15px !important;
+  height: 15px !important;
+  font-size: 9px !important;
+}
+@media (max-width: 380px) {
+  #content-chart #chart-list .chart-row {
+    grid-template-columns: minmax(92px, 1fr) 1px repeat(10, minmax(13px, 1fr)) 16px !important;
+    column-gap: 0 !important;
+    padding: 2px 1px !important;
+  }
+  #content-chart #chart-list .chart-row > div:first-child {
+    font-size: 8px !important;
+    padding-left: 2px !important;
+  }
+  #content-chart #chart-list .num-circle {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 8px !important;
+  }
+}
+</style>
+
+<style id="chart-screen-fit-final">
+/* Keep the chart inside the phone viewport; vertical scrolling only */
+#content-chart {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+#content-chart #chart-list,
+#content-chart #chart-statistics {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+#content-chart #chart-list .chart-row {
+  display: grid !important;
+  grid-template-columns: 34% 1% repeat(10, minmax(0, 1fr)) 4.5% !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  column-gap: 0 !important;
+  padding: 3px 0 !important;
+}
+#content-chart #chart-list .chart-row > div:first-child {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  font-size: clamp(8px, 1.65vw, 11px) !important;
+  letter-spacing: -0.2px !important;
+  padding-left: 2px !important;
+}
+#content-chart #chart-list .num-circle {
+  width: min(26px, 100%) !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  font-size: clamp(8px, 1.5vw, 10px) !important;
+  box-sizing: border-box !important;
+}
+#content-chart #chart-list .chart-row > div {
+  min-width: 0 !important;
+}
+#content-chart #chart-statistics .chart-stat-grid {
+  grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  gap: 1px !important;
+}
+</style>
+
+
+<style id="chart-height-match-game-history">
+/* Give Chart the same generous downward space as the Game History section. */
+#content-chart {
+  min-height: 560px !important;
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+#content-chart #chart-list {
+  min-height: 490px !important;
+  height: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+#content-chart #chart-list .chart-row {
+  min-height: 43px !important;
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+}
 </style>
 
 </head>  <body class="pb-24">  <div id="toast-msg">successfully!</div>  <div class="gradient-main p-5 rounded-b-[40px] shadow-lg">  
@@ -1217,6 +1343,11 @@ async function fetchExternalData() {
                 color:getWinningColors(item.number),  
                 size:parseInt(item.number,10)>=5?'Big':'Small'  
             }));  
+            // Sync the visible first Game History page as soon as a new result arrives.
+            // This avoids stale history rows until the user exits and reopens the page.
+            if (historyPageNumber === 1 && !historyPageLoading) {
+                historyPageData = historyData.slice(0, 10);
+            }
             renderLatestResults();  
             renderRecords();  
             renderChart();  
@@ -1330,7 +1461,7 @@ function renderChart() {
   
     historyData.slice(0,100).forEach(h => {  
         html += `<div class="chart-row">  
-            <div class="text-slate-400 font-mono text-[9px]">${h.period.toString().slice(-4)}</div>  
+            <div class="text-slate-400 font-mono text-[9px]">${h.period}</div>  
             <div></div>  
             ${[0,1,2,3,4,5,6,7,8,9].map(n =>  
                 `<div><div class="num-circle ${n===parseInt(h.num)?'num-selected':''}" style="${n===parseInt(h.num)?'background:'+h.color[0]:''}">${n}</div></div>`  
@@ -1497,7 +1628,7 @@ function reconcilePendingBets(resultList) {
             const hasResult = resultByPeriod.has(period);  
   
             // New-format settled wins are retried until the balance credit is confirmed.  
-            if ((status === 'WIN' || status === 'LOSS') && Number(bet.settlementVersion) === 2 && bet.balanceCredited !== true) {  
+            if ((status === 'WIN' || status === 'LOSS') && bet.balanceCredited !== true) {  
                 jobs.push(settleOneBet(child.ref, bet, period, hasResult ? resultByPeriod.get(period) : null, child.key));  
                 return;  
             }  
@@ -1519,46 +1650,47 @@ function reconcilePendingBets(resultList) {
 }  
   
 async function settleOneBet(betRef, bet, period, winningNumber, betKey) {
-    let statusNow = String(bet.status || 'Pending').toUpperCase();
+    let statusNow = String(bet.status || 'Pending').trim().toUpperCase();
     let didSettleNow = false;
     let isWin = statusNow === 'WIN';
     let winAmount = Number(bet.winAmount) || 0;
     let resultNumber = Number(winningNumber);
 
+    // Use one shared rule set for new and previously saved bets.
+    const getBetOutcome = (pickValue, numberValue) => {
+        const n = Number(numberValue);
+        const pick = String(pickValue ?? '').trim().toUpperCase().replace(/[\\s_-]+/g, '');
+        if (!Number.isInteger(n) || n < 0 || n > 9) return null;
+        if (/^\\d$/.test(pick)) return {win:Number(pick) === n, rate:9};
+        if (pick === 'BIG') return {win:n >= 5, rate:1.96};
+        if (pick === 'SMALL') return {win:n <= 4, rate:1.96};
+        if (pick === 'GREEN') return {win:[1,3,5,7,9].includes(n), rate:[1,3,7,9].includes(n) ? 1.96 : 1.5};
+        if (pick === 'RED') return {win:[0,2,4,6,8].includes(n), rate:[2,4,6,8].includes(n) ? 1.96 : 1.5};
+        if (pick === 'VIOLET' || pick === 'PURPLE') return {win:[0,5].includes(n), rate:4.5};
+        return null;
+    };
+
     try {
         if (statusNow === 'PENDING') {
             if (winningNumber === null || winningNumber === undefined || !Number.isFinite(resultNumber)) return null;
-            const n = resultNumber;
-            const pick = String(bet.pick);
-            let payout = 0;
-            isWin = false;
-
-            if (/^\d$/.test(pick)) {
-                isWin = Number(pick) === n; payout = 9;
-            } else if (pick === 'Big') {
-                isWin = n >= 5; payout = 1.96;
-            } else if (pick === 'Small') {
-                isWin = n <= 4; payout = 1.96;
-            } else if (pick === 'Green') {
-                isWin = [1,3,7,9,5].includes(n); payout = [1,3,7,9].includes(n) ? 1.96 : 1.5;
-            } else if (pick === 'Red') {
-                isWin = [2,4,6,8,0].includes(n); payout = [2,4,6,8].includes(n) ? 1.96 : 1.5;
-            } else if (pick === 'Violet') {
-                isWin = [0,5].includes(n); payout = 4.5;
+            const outcome = getBetOutcome(bet.pick, resultNumber);
+            if (!outcome) {
+                console.error('Unknown bet pick/result; settlement skipped:', bet.pick, period, winningNumber);
+                return null;
             }
-
+            isWin = outcome.win;
             const amount = Number(bet.amount) || 0;
-            winAmount = isWin ? Number((amount * payout).toFixed(2)) : 0;
+            winAmount = isWin ? Number((amount * outcome.rate).toFixed(2)) : 0;
 
             const tx = await betRef.transaction(current => {
-                if (!current || String(current.status || 'Pending').toUpperCase() !== 'PENDING') return;
+                if (!current || String(current.status || 'Pending').trim().toUpperCase() !== 'PENDING') return;
                 return {
                     ...current,
                     status: isWin ? 'WIN' : 'LOSS',
                     winAmount: winAmount.toFixed(2),
-                    resultNumber: n,
+                    resultNumber,
                     settledAt: Date.now(),
-                    settlementVersion: 2,
+                    settlementVersion: 3,
                     balanceCredited: !isWin
                 };
             });
@@ -1566,8 +1698,7 @@ async function settleOneBet(betRef, bet, period, winningNumber, betKey) {
             if (!tx.committed) {
                 const latest = tx.snapshot.val();
                 if (!latest) return null;
-                statusNow = String(latest.status || '').toUpperCase();
-                if (Number(latest.settlementVersion) !== 2) return null;
+                statusNow = String(latest.status || '').trim().toUpperCase();
                 bet = latest;
                 isWin = statusNow === 'WIN';
                 winAmount = Number(latest.winAmount) || 0;
@@ -1576,6 +1707,17 @@ async function settleOneBet(betRef, bet, period, winningNumber, betKey) {
                 statusNow = isWin ? 'WIN' : 'LOSS';
                 didSettleNow = true;
                 bet = tx.snapshot.val() || bet;
+            }
+        }
+
+        // Repair older WIN records that were saved without a payout amount/version.
+        if (statusNow === 'WIN' && winAmount <= 0) {
+            const savedNumber = Number(bet.resultNumber);
+            const outcome = getBetOutcome(bet.pick, savedNumber);
+            if (outcome && outcome.win) {
+                winAmount = Number(((Number(bet.amount) || 0) * outcome.rate).toFixed(2));
+                resultNumber = savedNumber;
+                await betRef.update({winAmount:winAmount.toFixed(2), settlementVersion:3});
             }
         }
 
@@ -1591,12 +1733,12 @@ async function settleOneBet(betRef, bet, period, winningNumber, betKey) {
             };
         }
 
+        // Credit exactly once using the bet key as an idempotency ledger entry.
         let creditConfirmed = bet.balanceCredited === true;
         if (!creditConfirmed) {
             const userRef = db.ref(`users/${userPhone}`);
             const ledgerKey = String(betKey);
             try {
-                // Preferred atomic update: balance and duplicate-payment ledger together.
                 const creditTx = await userRef.transaction(current => {
                     if (!current) return;
                     const user = {...current};
@@ -1608,25 +1750,21 @@ async function settleOneBet(betRef, bet, period, winningNumber, betKey) {
                     }
                     return user;
                 });
-                if (!creditTx.committed) throw new Error('User-node transaction was not committed.');
+                if (!creditTx.committed) throw new Error('Balance transaction was not committed.');
                 creditConfirmed = true;
             } catch (primaryError) {
-                // Fallback for Firebase rules that permit /balance writes but deny parent-node writes.
-                console.warn('Parent-node payout transaction failed; trying /balance:', primaryError);
+                // Keep the existing child-balance fallback for projects whose rules
+                // allow /balance writes but do not allow writes to the user parent.
+                console.warn('User-node payout transaction failed; trying /balance:', primaryError);
                 const balanceRef = db.ref(`users/${userPhone}/balance`);
                 const fallbackTx = await balanceRef.transaction(currentBalance => {
                     if (currentBalance === null || currentBalance === undefined) return;
                     return (Number(currentBalance) || 0) + winAmount;
                 });
-                if (!fallbackTx.committed) {
-                    throw new Error('Balance transaction denied. Check Firebase rules for users/{user}/balance.');
-                }
+                if (!fallbackTx.committed) throw new Error('Balance write denied. Check Firebase rules for users/{user}/balance.');
                 creditConfirmed = true;
             }
-
-            if (creditConfirmed) {
-                await betRef.update({balanceCredited:true, payoutCreditedAt:Date.now()});
-            }
+            if (creditConfirmed) await betRef.update({balanceCredited:true, payoutCreditedAt:Date.now(), settlementVersion:3});
         }
 
         return {
@@ -1637,10 +1775,8 @@ async function settleOneBet(betRef, bet, period, winningNumber, betKey) {
         };
     } catch (error) {
         console.error('Could not settle/credit bet:', period, error);
-        // Show the saved WIN result even if payout permissions need to be fixed.
-        if (statusNow === 'WIN') {
-            return {isWin:true, amount:winAmount, justSettled:didSettleNow, resultNumber:Number(bet.resultNumber)};
-        }
+        // Do not rewrite a saved WIN as LOSS if only the balance write failed.
+        if (statusNow === 'WIN') return {isWin:true, amount:winAmount, justSettled:didSettleNow, resultNumber:Number(bet.resultNumber)};
         return null;
     }
 }
