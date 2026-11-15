@@ -706,7 +706,95 @@ body {
   }
 }
 
-</style>  </head>  <body class="pb-24">  <div id="toast-msg">successfully!</div>  <div class="gradient-main p-5 rounded-b-[40px] shadow-lg">  
+
+/* Only the requested Game History details: keep the site's existing theme. */
+#content-records #records-body td:nth-child(1) {
+  color: #000000 !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  white-space: nowrap;
+}
+#content-records #records-body td:nth-child(2) {
+  font-size: 40px !important;
+  line-height: 1.15 !important;
+  font-weight: 900 !important;
+}
+#content-records #records-body td:nth-child(3) {
+  color: #1e3a8a !important;
+  font-weight: 800 !important;
+}
+.history-pagination {
+  display:flex; align-items:center; justify-content:center; gap:24px;
+  padding:18px 12px; background:inherit;
+}
+.history-pagination button {
+  width:48px; height:48px; border:0; border-radius:9px;
+  background:#be123c; color:#fff; font-size:32px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+}
+.history-pagination button:disabled { opacity:.4; }
+.history-pagination span { font-size:16px; font-weight:700; color:inherit; }
+
+</style>  
+<style id="requested-history-contrast-polish">
+/* Polished Game History contrast only; the rest of the site's theme is untouched. */
+#content-records { background:#ffffff !important; color:#172554 !important; }
+#content-records table { background:#ffffff !important; border-collapse:separate; border-spacing:0; }
+#content-records thead,
+#content-records thead tr,
+#content-records thead th {
+  background:#172554 !important;
+  color:#ffffff !important;
+}
+#content-records thead th { font-weight:800 !important; padding:13px 7px !important; }
+#content-records tbody tr { background:#ffffff !important; }
+#content-records tbody td { border-bottom:1px solid #e2e8f0 !important; }
+#content-records tbody td:first-child {
+  color:#000000 !important;
+  font-weight:800 !important;
+  font-size:15px !important;
+  white-space:nowrap !important;
+}
+#content-records tbody td:nth-child(2) { font-size:40px !important; line-height:1.15 !important; font-weight:900 !important; } /* Keep the result number color from the original result data. */
+#content-records tbody td:nth-child(3) { color:#172554 !important; font-weight:800 !important; }
+#content-records .history-pagination {
+  background:#172554 !important;
+  color:#ffffff !important;
+  border-radius:0 0 10px 10px;
+}
+#content-records .history-pagination span { color:#ffffff !important; font-weight:800 !important; }
+#content-records .history-pagination button {
+  background:#243b70 !important;
+  color:#ffffff !important;
+  border:1px solid rgba(255,255,255,.22) !important;
+}
+#content-records .history-pagination button:disabled { opacity:.42 !important; }
+</style>
+
+
+<style id="requested-navy-boxes-only">
+/* Keep Win Go period boxes navy; highlight the selected period in the original gold */
+.grid.grid-cols-4 > .mode-btn {
+  background:#142b52 !important;
+  border:1px solid #29436a !important;
+  color:#ffffff !important;
+}
+.grid.grid-cols-4 > .mode-btn p,
+.grid.grid-cols-4 > .mode-btn i {
+  color:#ffffff !important;
+}
+.grid.grid-cols-4 > .mode-btn.mode-btn-active {
+  background:var(--dk-gradient) !important;
+  border:2px solid #b88a3b !important;
+  color:#ffffff !important;
+}
+.grid.grid-cols-4 > .mode-btn.mode-btn-active p,
+.grid.grid-cols-4 > .mode-btn.mode-btn-active i {
+  color:#ffffff !important;
+}
+/* Chart result cards return to their previous appearance */
+</style>
+</head>  <body class="pb-24">  <div id="toast-msg">successfully!</div>  <div class="gradient-main p-5 rounded-b-[40px] shadow-lg">  
     <div class="flex justify-between items-center mb-6 text-white px-2">  <button onclick="window.history.back()">  
         <i class="fa-solid fa-chevron-left text-lg"></i>  
     </button>  
@@ -843,7 +931,12 @@ body {
             </tr>  
         </thead>  
         <tbody id="records-body"></tbody>  
-    </table>  
+    </table>
+    <div id="records-pagination" class="history-pagination">
+        <button type="button" id="history-prev" onclick="changeHistoryPage(-1)" aria-label="Previous page">‹</button>
+        <span id="history-page-label">1 / 1</span>
+        <button type="button" id="history-next" onclick="changeHistoryPage(1)" aria-label="Next page">›</button>
+    </div>
 </div>  
 
 <div id="content-my" class="hidden bg-white min-h-[350px]">  
@@ -1039,7 +1132,8 @@ const db = firebase.database();
 let userPhone = "Guest";  
 let balance = 0, currentMode = '30s';  
 let baseAmount = 1, multiplier = 1, qty = 1;  
-let historyData = [], currentPeriod = "", lastFetchedPeriod = "";  
+let historyData = [], currentPeriod = "", lastFetchedPeriod = "";
+let historyPageData = [], historyPageNumber = 1, historyTotalPages = 1, historyPageLoading = false;  
 let tempBetPick = "";  
 let historyRef = null;  
 let lastReconcileAt = 0;  
@@ -1128,21 +1222,71 @@ function getWinningColors(n) {
     return (n%2===0)?['#ef4444']:['#10b981'];  
 }  
   
-function renderRecords() {  
-    document.getElementById('records-body').innerHTML = historyData.map(h => {  
-        const colorHtml = h.color.map(c =>  
-            `<span class="w-3 h-3 rounded-full inline-block mx-0.5" style="background:${c}"></span>`  
-        ).join('');  
-  
-        return `<tr class="border-b border-gray-50">  
-            <td class="p-3 font-mono text-xs">${h.period}</td>  
-            <td class="p-3 font-black text-lg" style="color:${h.color[0]}">${h.num}</td>  
-            <td class="p-3 font-bold">${h.size}</td>  
-            <td class="p-3">${colorHtml}</td>  
-        </tr>`;  
-    }).join('');  
-}  
-  
+function renderRecords() {
+    const rows = historyPageData.length ? historyPageData : historyData;
+    document.getElementById('records-body').innerHTML = rows.map(h => {
+        const colors = Array.isArray(h.color) ? h.color : getWinningColors(h.num);
+        const colorHtml = colors.map(c =>
+            `<span class="w-3 h-3 rounded-full inline-block mx-0.5" style="background:${c}"></span>`
+        ).join('');
+        return `<tr class="border-b border-gray-50">
+            <td class="p-3 font-mono">${h.period}</td>
+            <td class="p-3 font-black" style="color:${colors[0] || '#10b981'}">${h.num}</td>
+            <td class="p-3 font-bold">${h.size || (Number(h.num)>=5?'Big':'Small')}</td>
+            <td class="p-3">${colorHtml}</td>
+        </tr>`;
+    }).join('');
+    const label = document.getElementById('history-page-label');
+    const prev = document.getElementById('history-prev');
+    const next = document.getElementById('history-next');
+    if (label) label.textContent = `${historyPageNumber} / ${historyTotalPages}`;
+    if (prev) prev.disabled = historyPageNumber <= 1 || historyPageLoading;
+    if (next) next.disabled = historyPageNumber >= historyTotalPages || historyPageLoading;
+}
+
+async function changeHistoryPage(delta) {
+    const target = historyPageNumber + delta;
+    if (target < 1 || target > historyTotalPages || historyPageLoading) return;
+    await loadHistoryPage(target);
+}
+
+async function loadHistoryPage(page) {
+    if (historyPageLoading) return;
+    historyPageLoading = true;
+    renderRecords();
+    try {
+        const url = new URL(apiUrls[currentMode]);
+        url.searchParams.set('pageNo', String(page));
+        url.searchParams.set('pageSize', '10');
+        const response = await fetch(url.toString(), {cache:'no-store'});
+        if (!response.ok) throw new Error('History server returned ' + response.status);
+        const payload = await response.json();
+        const data = payload && payload.data;
+        const list = data && Array.isArray(data.list) ? data.list : [];
+        if (!list.length) throw new Error('No history returned for this page');
+        historyPageData = list.map(item => ({
+            period: item.issueNumber,
+            num: Number(item.number),
+            color: getWinningColors(item.number),
+            size: Number(item.number) >= 5 ? 'Big' : 'Small'
+        }));
+        historyPageNumber = page;
+        const total = Number(data.totalPage ?? data.totalPages ?? data.total_page ?? 0);
+        if (Number.isFinite(total) && total > 0) historyTotalPages = total;
+        else if (list.length < 10) historyTotalPages = page;
+        else historyTotalPages = Math.max(historyTotalPages, page + 1);
+        renderRecords();
+    } catch (error) {
+        console.error('Could not load history page:', error);
+        const toast = document.getElementById('toast-msg');
+        if (toast) { toast.textContent = 'আগের রেজাল্ট লোড করা যায়নি'; toast.style.display = 'block'; setTimeout(() => toast.style.display = 'none', 2200); }
+        renderRecords();
+    } finally {
+        historyPageLoading = false;
+        renderRecords();
+    }
+}
+
 function renderChart() {  
     const stats = document.getElementById('chart-statistics');  
     if (stats) {  
@@ -1695,7 +1839,8 @@ window.onload = () => {
         loadMyHistory();  
     }  
   
-    fetchExternalData();  
+    fetchExternalData();
+loadHistoryPage(1);  
     setInterval(fetchExternalData,2000);  
 };  
 </script>  </body>  
