@@ -948,6 +948,9 @@ body {
 }
 </style>
 
+
+
+
 </head>  <body class="pb-24">  <div id="toast-msg">successfully!</div>  <div class="gradient-main p-5 rounded-b-[40px] shadow-lg">  
     <div class="flex justify-between items-center mb-6 text-white px-2">  <button onclick="window.history.back()">  
         <i class="fa-solid fa-chevron-left text-lg"></i>  
@@ -1143,28 +1146,28 @@ body {
     </button>  
 </div>
 
-</div>  <div id="overlay" class="overlay" onclick="closePopups()"></div>  <div id="result-overlay" class="result-container">  
-    <div class="result-card" id="res-card-node">  
-        <div class="res-ribbon" aria-hidden="true"><span class="res-wing res-wing-left"></span><span class="res-wing res-wing-right"></span><span class="res-medal"><i class="fa-solid fa-rocket"></i></span></div>  
-        <div class="res-header-bg" id="res-header-node">  
-            <h2 class="res-title-text" id="res-title-node">CONGRATULATIONS</h2>  
-        </div>  
-        <div class="result-inner px-5 mt-4">  
-            <p class="result-kicker">LOTTERY RESULTS</p>  
-            <div class="result-tags flex justify-center gap-2 mb-5">  
-                <span id="pop-res-color" class="res-tag">Green</span>  
-                <span id="pop-res-num" class="res-tag">5</span>  
-                <span id="pop-res-size" class="res-tag">Big</span>  
-            </div>  
-            <div class="res-bonus-box" id="res-bonus-node">  
-                <p class="res-label" id="res-label-node">BONUS</p>  
-                <p class="res-amt"><span class="currency-mark">৳</span><span id="res-amount-node">0.00</span></p>  
-                <p class="result-period-line" aria-hidden="true">PERIOD <span id="res-period-node">---</span></p>  
-            </div>  
-            <label class="auto-close-line"><input id="result-auto-close" type="checkbox"> <span>3 seconds auto close</span></label>  
-        </div>  
-        <button onclick="closeResultPopup()" class="result-close" aria-label="Close result"><i class="fa-solid fa-xmark"></i></button>  
-    </div>  
+</div>  <div id="overlay" class="overlay" onclick="closePopups()"></div>  <div id="result-overlay" class="result-container">
+  <div class="result-card image-result-card" id="res-card-node">
+    <div class="result-art-stage">
+      <img id="result-art-image" class="result-art-image" src="https://i.ibb.co.com/Xkr9Z0CG/file-000000009ce88230bbab2f91badd7dd9.png" alt="Result popup">
+      <div class="result-art-fields">
+        <div class="result-art-tags">
+          <span id="pop-res-color" class="res-tag">Green</span>
+          <span id="pop-res-num" class="res-tag">1</span>
+          <span id="pop-res-size" class="res-tag">Small</span>
+        </div>
+        <div class="result-art-win-amount" id="res-bonus-node">
+          <span class="result-art-label" id="res-label-node">Bonus</span>
+          <span class="result-art-money"><span class="currency-mark">৳</span><span id="res-amount-node">0.00</span></span>
+        </div>
+        <div class="result-art-period"><span class="result-art-period-mode" id="res-period-mode">Period: WinGo 30sec</span><span class="result-art-period-number" id="res-period-node">---</span></div>
+        <div class="result-art-auto"><input id="result-auto-close" type="checkbox"><span>3 seconds auto close</span></div>
+      </div>
+    </div>
+    <div class="result-art-loss-period">Period: <span id="res-period-loss-copy">---</span></div>
+    <button onclick="closeResultPopup()" class="result-close image-result-close" aria-label="Close result"><i class="fa-solid fa-xmark"></i></button>
+    <h2 id="res-title-node" class="result-hidden-title">CONGRATULATIONS</h2>
+  </div>
 </div>  <style>  
 /* Official-style result modal inspired by the supplied reference; game history remains visible behind it. */  
 #result-overlay.result-container{background:rgba(4,7,15,.58)!important;backdrop-filter:blur(1.5px)!important;-webkit-backdrop-filter:blur(1.5px)!important;padding:22px 14px;}  
@@ -2007,5 +2010,486 @@ window.onload = () => {
 loadHistoryPage(1);  
     setInterval(fetchExternalData,2000);  
 };  
-</script>  </body>  
+</script>  
+<style id="image-result-popup-only">
+#result-overlay.result-container{position:fixed!important;inset:0!important;z-index:999999!important;display:none;align-items:center!important;justify-content:center!important;background:rgba(0,0,0,.72)!important;padding:14px!important;overflow-y:auto!important}
+#result-overlay.result-container.show-result{display:flex!important}
+#res-card-node.image-result-card{position:relative!important;width:min(88vw,410px)!important;max-width:410px!important;min-height:0!important;height:auto!important;padding:0!important;margin:0 auto!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important;color:#102b68!important}
+#res-card-node .result-art-stage{position:relative;width:100%;line-height:0}
+#res-card-node .result-art-image{display:block;width:100%;height:auto;object-fit:contain;border:0;user-select:none;-webkit-user-drag:none}
+#res-card-node .result-art-fields{position:absolute;inset:0;pointer-events:none;line-height:normal}
+#res-card-node .result-art-tags{position:absolute;left:18%;top:43.5%;width:70%;height:6%;display:flex;align-items:center;justify-content:center;gap:2%;}
+#res-card-node .result-art-tags .res-tag{display:flex;align-items:center;justify-content:center;min-width:0;height:100%;padding:0 2.5%;border-radius:13px;background:#13b92c!important;color:#fff!important;font-size:clamp(10px,2.7vw,15px)!important;font-weight:700!important;white-space:nowrap;text-shadow:0 1px 1px rgba(0,0,0,.15)}
+#res-card-node .result-art-tags #pop-res-num{min-width:12%;border-radius:50%}
+#res-card-node.loss-mode .result-art-tags .res-tag{background:#14b52c!important}
+#res-card-node .result-art-win-amount{position:absolute;left:16%;top:57%;width:68%;height:13%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#d34e58;text-align:center;pointer-events:none}
+#res-card-node .result-art-label{font-size:clamp(12px,3.2vw,18px);font-weight:700;margin-bottom:1%}
+#res-card-node .result-art-money{font-size:clamp(22px,6vw,34px);font-weight:800;white-space:nowrap}
+#res-card-node .result-art-period{position:absolute;left:18%;top:72.5%;width:66%;text-align:center;font-size:clamp(10px,2.7vw,15px);font-weight:700;color:#123b83;overflow-wrap:anywhere;line-height:1.25;pointer-events:none}
+#res-card-node .result-art-auto{position:absolute;left:8%;top:85.5%;width:85%;height:6%;display:flex;align-items:center;gap:9px;color:#fff;font-size:clamp(12px,3.3vw,18px);font-weight:700;pointer-events:auto;text-shadow:0 1px 2px rgba(0,0,0,.12)}
+#res-card-node .result-art-auto input{width:clamp(18px,5vw,28px);height:clamp(18px,5vw,28px);accent-color:#168cff;flex:0 0 auto;cursor:pointer}
+#res-card-node .result-art-loss-period{display:none}
+#res-card-node.loss-mode .result-art-win-amount{display:none}
+#res-card-node.loss-mode .result-art-period{top:76%;color:#123b83}
+#res-card-node .result-hidden-title{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
+#res-card-node .image-result-close{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;margin:8px auto 0!important;left:auto!important;right:auto!important;bottom:auto!important;top:auto!important;width:42px!important;height:42px!important;border:2px solid rgba(255,255,255,.9)!important;border-radius:50%!important;background:#102b68!important;color:#fff!important;font-size:21px!important;box-shadow:0 4px 14px rgba(0,0,0,.35)!important;cursor:pointer!important;z-index:5!important}
+@media(max-height:700px){#res-card-node.image-result-card{width:min(76vw,340px)!important}}
+@media(prefers-reduced-motion:no-preference){#res-card-node.image-result-card{animation:imagePopupIn .28s ease-out both}@keyframes imagePopupIn{from{opacity:0;transform:translateY(18px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}}
+</style>
+<script>
+(function(){
+  const originalShow = window.showNewResultPopup;
+  if (typeof originalShow !== 'function') return;
+  window.showNewResultPopup = function(win,amt,prd,colors,num,size){
+    const image = document.getElementById('result-art-image');
+    if(image) image.src = win
+      ? 'https://i.ibb.co.com/Xkr9Z0CG/file-000000009ce88230bbab2f91badd7dd9.png'
+      : 'https://i.ibb.co.com/gZCBSgry/file-0000000049d48230997456f710f68e3e.png';
+    const lossPeriod = document.getElementById('res-period-loss-copy');
+    if(lossPeriod) lossPeriod.textContent = prd;
+    return originalShow.apply(this,arguments);
+  };
+})();
+</script>
+
+
+<style id="win-popup-image-and-centered-close-fix">
+/* WIN image source is updated above; keep the close control centered on the image itself. */
+#res-card-node.image-result-card{position:relative!important;}
+#res-card-node.image-result-card .image-result-close{
+  position:absolute!important;
+  left:50%!important;
+  top:96%!important;
+  right:auto!important;
+  bottom:auto!important;
+  transform:translate(-50%,-50%)!important;
+  margin:0!important;
+  width:42px!important;
+  height:42px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  z-index:100001!important;
+  border:2px solid rgba(255,255,255,.95)!important;
+  border-radius:50%!important;
+  background:#102b68!important;
+  color:#fff!important;
+  box-shadow:0 4px 14px rgba(0,0,0,.4)!important;
+  cursor:pointer!important;
+}
+@media(max-height:700px){
+  #res-card-node.image-result-card .image-result-close{top:96%!important;width:38px!important;height:38px!important;}
+}
+</style>
+
+
+
+<!-- FINAL WIN PERIOD POSITION + PREMIUM LEGIBILITY: popup-only styling. -->
+<style id="premium-win-period-above-ticket">
+  /* WIN: market + period number sit above the white ticket, not inside/below it. */
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-period{
+    left:8%!important;
+    top:49.5%!important;
+    width:84%!important;
+    height:6.8%!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:2px!important;
+    padding:2px 7px!important;
+    border-radius:9px!important;
+    background:rgba(10,38,91,.34)!important;
+    color:#fff!important;
+    font-family:Arial,sans-serif!important;
+    font-size:clamp(11px,2.9vw,15px)!important;
+    font-weight:800!important;
+    line-height:1.15!important;
+    letter-spacing:.15px!important;
+    text-align:center!important;
+    text-shadow:0 1px 3px rgba(0,0,0,.8),0 0 5px rgba(0,0,0,.35)!important;
+    overflow-wrap:anywhere!important;
+    pointer-events:none!important;
+  }
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-period-mode,
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-period-number{
+    display:block!important;
+    width:100%!important;
+    color:#fff!important;
+    font-weight:800!important;
+    text-shadow:0 1px 3px rgba(0,0,0,.85)!important;
+  }
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-period-number{
+    font-size:clamp(10px,2.65vw,14px)!important;
+    letter-spacing:.25px!important;
+  }
+  /* WIN ticket retains the Bonus and navy amount. LOSS layout is untouched. */
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-win-amount{
+    top:57.2%!important;
+    height:10.5%!important;
+  }
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-label{
+    color:#123b83!important;
+    text-shadow:0 1px 0 rgba(255,255,255,.7)!important;
+    font-weight:900!important;
+  }
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-money{
+    color:#123b83!important;
+    font-weight:900!important;
+    text-shadow:0 1px 0 rgba(255,255,255,.75)!important;
+  }
+  @media(max-width:360px){
+    #res-card-node.image-result-card:not(.loss-mode) .result-art-period{top:49%!important;font-size:10px!important;}
+    #res-card-node.image-result-card:not(.loss-mode) .result-art-period-number{font-size:9px!important;}
+  }
+</style>
+
+
+<style id="final-marked-ticket-layout">
+/* WIN popup only: Bonus, amount, market and full period stay inside
+   the red-marked central area of the white ticket. */
+#res-card-node.image-result-card:not(.loss-mode) .result-art-win-amount {
+  left:16% !important;
+  top:54.5% !important;
+  width:68% !important;
+  height:9% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  z-index:3 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period {
+  position:absolute !important;
+  display:flex !important;
+  left:18% !important;
+  top:64.1% !important;
+  width:64% !important;
+  height:5.2% !important;
+  box-sizing:border-box !important;
+  padding:2px 5px !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:1px !important;
+  border-radius:6px !important;
+  background:rgba(18,59,131,.09) !important;
+  color:#123b83 !important;
+  text-align:center !important;
+  font-size:clamp(8px,2.1vw,11px) !important;
+  font-weight:800 !important;
+  line-height:1.05 !important;
+  overflow:hidden !important;
+  overflow-wrap:anywhere !important;
+  z-index:4 !important;
+  pointer-events:none !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-mode,
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-number {
+  display:block !important;
+  width:100% !important;
+  color:#123b83 !important;
+  font-size:clamp(8px,2.1vw,11px) !important;
+  font-weight:800 !important;
+  line-height:1.05 !important;
+  text-shadow:none !important;
+  overflow-wrap:anywhere !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-number {
+  letter-spacing:.1px !important;
+}
+/* Keep the loss popup and all other page elements unchanged. */
+</style>
+
+
+<style id="final-period-position-and-navy-color">
+/* WIN popup only: lift the period details above the lower golden curve
+   and restore the original navy-blue text color. */
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period {
+  top:60.8% !important;
+  left:15% !important;
+  width:70% !important;
+  height:6.2% !important;
+  padding:1px 3px !important;
+  background:transparent !important;
+  border-radius:0 !important;
+  color:#123b83 !important;
+  overflow:visible !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-mode,
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-number {
+  color:#123b83 !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.65) !important;
+  font-size:clamp(9px,2.25vw,12px) !important;
+  font-weight:800 !important;
+  line-height:1.12 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-number {
+  letter-spacing:.1px !important;
+}
+</style>
+
+
+<style id="final-period-above-bonus-below-ticket">
+/* WIN popup only:
+   Period box sits above the golden curved line; Bonus and amount sit below it. */
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period {
+  left:15% !important;
+  top:55.5% !important;
+  width:70% !important;
+  height:6.5% !important;
+  padding:2px 4px !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:1px !important;
+  background:rgba(18,59,131,.07) !important;
+  border-radius:5px !important;
+  color:#123b83 !important;
+  overflow:visible !important;
+  z-index:5 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-mode,
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-number {
+  display:block !important;
+  width:100% !important;
+  color:#123b83 !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.65) !important;
+  font-size:clamp(9px,2.25vw,12px) !important;
+  font-weight:800 !important;
+  line-height:1.12 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-win-amount {
+  left:16% !important;
+  top:63.2% !important;
+  width:68% !important;
+  height:9.5% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  z-index:4 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-label,
+#res-card-node.image-result-card:not(.loss-mode) .result-art-money {
+  color:#123b83 !important;
+}
+</style>
+
+
+<style id="final-higher-period-and-bonus-inside-white-ticket">
+/* WIN popup only: move both period details and Bonus/amount higher,
+   keeping every element within the white ticket area. */
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period {
+  left:15% !important;
+  top:51.5% !important;
+  width:70% !important;
+  height:6.2% !important;
+  padding:1px 4px !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:1px !important;
+  background:rgba(18,59,131,.07) !important;
+  border-radius:5px !important;
+  color:#123b83 !important;
+  overflow:visible !important;
+  z-index:5 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-mode,
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-number {
+  display:block !important;
+  width:100% !important;
+  color:#123b83 !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.65) !important;
+  font-size:clamp(9px,2.2vw,12px) !important;
+  font-weight:800 !important;
+  line-height:1.1 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-win-amount {
+  left:16% !important;
+  top:58.5% !important;
+  width:68% !important;
+  height:9% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  z-index:4 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-label,
+#res-card-node.image-result-card:not(.loss-mode) .result-art-money {
+  color:#123b83 !important;
+}
+</style>
+
+</body>  
 </html>
+
+<!-- RESULT POPUP ONLY: match every result tag to the actual drawn color; keep amount navy. -->
+<style id="result-popup-dynamic-result-colors">
+  #res-card-node.image-result-card .result-art-tags .res-tag {
+    color:#fff !important;
+    border:1px solid rgba(255,255,255,.78) !important;
+    box-shadow:0 2px 5px rgba(0,0,0,.16) !important;
+  }
+  #res-card-node.image-result-card .result-art-money {
+    color:#123b83 !important;
+    text-shadow:0 1px 0 rgba(255,255,255,.45);
+  }
+  #res-card-node.image-result-card .result-art-period {
+    color:#123b83 !important;
+  }
+</style>
+<script id="result-popup-dynamic-result-colors-script">
+(function(){
+  const previousShow = window.showNewResultPopup;
+  if (typeof previousShow !== 'function') return;
+  window.showNewResultPopup = function(win, amount, period, colors, number, size) {
+    const result = previousShow.apply(this, arguments);
+    const tags = [
+      document.getElementById('pop-res-color'),
+      document.getElementById('pop-res-num'),
+      document.getElementById('pop-res-size')
+    ].filter(Boolean);
+    const palette = Array.isArray(colors) ? colors.filter(Boolean) : [];
+    const first = String(palette[0] || '#10b981').trim();
+    const second = String(palette[1] || '').trim();
+    let tagBackground = first;
+    if (palette.length > 1 && second) {
+      tagBackground = 'linear-gradient(110deg,' + first + ' 0%,' + first + '48%,' + second + '52%,' + second + '100%)';
+    }
+    tags.forEach(tag => {
+      tag.style.setProperty('background', tagBackground, 'important');
+      tag.style.setProperty('background-color', first, 'important');
+      tag.style.setProperty('color', '#ffffff', 'important');
+    });
+    const money = document.querySelector('#res-card-node .result-art-money');
+    if (money) money.style.setProperty('color', '#123b83', 'important');
+    const periodNode = document.querySelector('#res-card-node .result-art-period');
+    if (periodNode) periodNode.style.setProperty('color', '#123b83', 'important');
+    return result;
+  };
+})();
+</script>
+
+
+
+<!-- WIN RESULT TICKET: keep Bonus, amount, market and period number together inside the white ticket. -->
+<style id="win-ticket-period-layout-fix">
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-win-amount{
+    top:56.5%!important;
+    height:11%!important;
+    justify-content:center!important;
+  }
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-period{
+    display:flex!important;
+    position:absolute!important;
+    left:16%!important;
+    top:67.5%!important;
+    width:68%!important;
+    height:6.8%!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:2px!important;
+    text-align:center!important;
+    color:#fff!important;
+    font-size:clamp(10px,2.55vw,14px)!important;
+    font-weight:700!important;
+    line-height:1.18!important;
+    overflow-wrap:anywhere!important;
+  }
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-period-mode,
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-period-number{
+    display:block!important;
+    width:100%!important;
+    color:#fff!important;
+    text-shadow:0 1px 2px rgba(15,45,95,.45)!important;
+  }
+  #res-card-node.image-result-card:not(.loss-mode) .result-art-period-number{
+    font-size:clamp(10px,2.55vw,14px)!important;
+    letter-spacing:.1px!important;
+  }
+  /* Keep the LOSS layout exactly where it was. */
+  #res-card-node.image-result-card.loss-mode .result-art-period{
+    display:block!important;top:76%!important;color:#123b83!important;
+  }
+</style>
+<script id="win-ticket-period-mode-script">
+(function(){
+  const oldShow = window.showNewResultPopup;
+  if (typeof oldShow !== 'function') return;
+  window.showNewResultPopup = function(win, amount, period, colors, number, size){
+    const result = oldShow.apply(this, arguments);
+    const modeNode = document.getElementById('res-period-mode');
+    if (modeNode) {
+      // Read the active game market (currentMode is a top-level lexical variable).
+      const mode = String((typeof currentMode !== 'undefined' ? currentMode : '30s') || '30s').toLowerCase();
+      const labels = {'30s':'WinGo 30sec','1m':'WinGo 1min','3m':'WinGo 3min','5m':'WinGo 5min'};
+      modeNode.textContent = 'Period: ' + (labels[mode] || ('WinGo ' + mode));
+    }
+    return result;
+  };
+})();
+</script>
+
+
+<style id="final-win-ticket-period-bonus-position">
+/* WIN popup only: keep the period box above the golden curve,
+   inside the white ticket; lift Bonus and amount as requested. */
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period {
+  position:absolute !important;
+  left:15% !important;
+  top:51.5% !important;
+  width:70% !important;
+  height:4.2% !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:1px !important;
+  padding:1px 4px !important;
+  border-radius:5px !important;
+  background:rgba(18,59,131,.06) !important;
+  color:#123b83 !important;
+  font-size:clamp(8px,2.05vw,11px) !important;
+  font-weight:800 !important;
+  line-height:1.05 !important;
+  text-align:center !important;
+  overflow:visible !important;
+  z-index:5 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-mode,
+#res-card-node.image-result-card:not(.loss-mode) .result-art-period-number {
+  display:block !important;
+  width:100% !important;
+  color:#123b83 !important;
+  font-size:clamp(8px,2.05vw,11px) !important;
+  font-weight:800 !important;
+  line-height:1.05 !important;
+  text-shadow:none !important;
+  overflow-wrap:anywhere !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-win-amount {
+  left:16% !important;
+  top:55.5% !important;
+  width:68% !important;
+  height:9.5% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  z-index:4 !important;
+}
+#res-card-node.image-result-card:not(.loss-mode) .result-art-label,
+#res-card-node.image-result-card:not(.loss-mode) .result-art-money {
+  color:#123b83 !important;
+}
+</style>
+
